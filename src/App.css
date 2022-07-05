@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100;200;300;400&family=Permanent+Marker&family=Playfair+Display+SC:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+/* ------------------------------------------------- */
+/* ----- CSS CUSTOM PROPERTIES / CSS VARIABLES ----- */
+:root {
+  /* COLOURS */
+
+
+  /* FONT & TYPOGRAPHY */
+  --header-font: 'Montserrat', sans-serif;
+  --body-font: 'Work Sans', sans-serif;
+  --monospace-font: 'Roboto Mono', monospace;
+  --header-clamp: clamp(2rem, 3.5vw, 4.5rem);
+  --subheader-clamp: clamp(1.5rem, 2.5vw, 3rem);
+  --form-clamp: clamp(0.8rem, 1.1vw, 1.5rem);
+  --text-clamp: clamp(0.95rem, 1.35vw, 1.75rem);
+  --subtext-clamp: var(--form-clamp);
+
+  /* Z-INDEX */
+  --z-bg: -1;
+  --z-tooltip: 5;
+  --z-fixed: 10;
+  --z-modal: 10;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+/* --------------------- */
+/* ----- CSS RESET ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  scroll-behavior: smooth;
 }
+
+ol,
+ul {
+  list-style: none;
+}
+
+.App {}
 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+}
+
+.title-container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.title-text {
   color: white;
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.App-link {
-  color: #61dafb;
+.title-text h1 {
+  font-size: 8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.theme-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  text-align: center;
+}
+
+.title-btn {
+  padding: 3rem 0;
+}
+
+.day {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  background-color: #ffaf6d;
+}
+
+.night {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  background-color: rgb(42, 47, 98);
+}
+
+.theme-title {
+  display: inline-block;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display SC', serif;
+  font-weight: 400;
+  font-style: italic;
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+
+.arrow-blah {
+  display: inline-block;
+  color: white;
+  transform: scale(2) rotate(45deg);
+  bottom: 25%;
 }
