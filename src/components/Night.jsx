@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-import { ReactComponent as SeaTop } from "../assets/seaTop.svg";
-import { ReactComponent as SeaBottom } from "../assets/seaBottom.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import SeaTop from "../components/svgComponents/SeaTop";
+import SeaBottom from "../components/svgComponents/SeaBottom";
 
 import "./Night.css";
 
@@ -30,18 +31,8 @@ function Night() {
             <p>Landscape with the Fall of Icarus</p>
             <p>A Poem by William Carlos Williams</p>
           </div>
-          <SeaTop>
-            2 color1={nightColours[0]}1 nightColours[0] color1={}
-            ta s
-            <param name="color1" value={nightColours[0]} />
-            <param name="color2" value={nightColours[1]} />
-          </SeaTop>
-          {/* <SeaBottom>
-            <param name="color3" value={nightColours[0]} />
-            <param name="color4" value={nightColours[1]} />
-          </SeaBottom> */}
-          {/* <svg src="../assets/forest.svg"></svg> */}
-          {/* <svg src="../assets/sea.svg"></svg> */}
+          <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
+          <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
         </div>
       </section>
       <section className="section" id="page2">
