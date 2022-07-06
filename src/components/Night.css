@@ -37,12 +37,30 @@ p {
   font-size: 1.5rem;
 }
 
+/* Spacing for title page */
+.poemTitleContainer {
+    position: relative;
+}
+
+.seaTopContainer {
+    width: 100%;
+    position: absolute;
+    top: 90%;
+    
+}
+
+.seaBottomContainer {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+}
+
 
 
 
 /* DELETE BELOW LATER */
 #page1 {
-    background-color: darkblue;
+    background-color: #011e37;
 }
 #page2 {
     background-color: rgb(248, 117, 103);
