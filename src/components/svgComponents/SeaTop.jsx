@@ -8,6 +8,7 @@ function SeaTop(props) {
       id="svg"
       viewBox="0 0 1440 400"
       xmlns="http://www.w3.org/2000/svg"
+<<<<<<< HEAD
       className="transition duration-300 ease-in-out delay-150"
     >
       <defs>
@@ -24,6 +25,11 @@ function SeaTop(props) {
         className="transition-all duration-300 ease-in-out delay-150 path-0"
       ></path>
       {/* <defs>
+=======
+      class="transition duration-300 ease-in-out delay-150"
+    >
+      <defs>
+>>>>>>> b0e4eb8 (feature: created new components for sea svg, added poem text and typography)
         <linearGradient id="seaTop" x1="79%" y1="91%" x2="21%" y2="9%">
           <stop offset="20%" stopColor={props.color1}></stop>
           <stop offset="80%" stopColor={props.color2}></stop>
@@ -35,6 +41,7 @@ function SeaTop(props) {
         stroke="none"
         strokeWidth="0"
         fill="url(#seaTop)"
+<<<<<<< HEAD
         className="transition-all duration-300 ease-in-out delay-150 path-0"
       ></path> */}
     </svg>
@@ -62,4 +69,12 @@ function SeaTop(props) {
     class="transition-all duration-300 ease-in-out delay-150 path-1"
   ></path>
 </svg>;
+=======
+        class="transition-all duration-300 ease-in-out delay-150 path-0"
+      ></path>
+    </svg>
+  );
+}
+
+>>>>>>> b0e4eb8 (feature: created new components for sea svg, added poem text and typography)
 export default SeaTop;

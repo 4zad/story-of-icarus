@@ -1,6 +1,7 @@
 import React from "react";
 
 function SeaBottom(props) {
+<<<<<<< HEAD
   return (
     <svg
       width="100%"
@@ -39,6 +40,9 @@ function SeaBottom(props) {
       ></path> */}
     </svg>
   );
+=======
+  return <div>SeaBottom</div>;
+>>>>>>> b0e4eb8 (feature: created new components for sea svg, added poem text and typography)
 }
 
 export default SeaBottom;
