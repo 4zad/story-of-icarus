@@ -54,24 +54,41 @@ ul {
 .title-container {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: block;
 }
 
 .title-text {
-  color: white;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: white;
   font-family: 'Playfair Display SC', serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.title-text h1 {
+.title-text > h1 {
   font-size: 8rem;
 }
 
+.arrow-btn {
+  position: absolute;
+  display: inline-block;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  padding: 2rem 0;
+}
+
+.arrow-icon {
+  color: white;
+  transform: scale(1.5) rotate(45deg);
+  height: fit-content;
+}
 
 .theme-container {
   width: 100vw;
@@ -80,10 +97,6 @@ ul {
   /* flex-direction: row; */
   justify-content: space-between;
   text-align: center;
-}
-
-.title-btn {
-  padding: 3rem 0;
 }
 
 .day {
@@ -113,9 +126,5 @@ ul {
   /* transform: translate(-50%, -50%); */
 }
 
-.arrow-blah {
-  display: inline-block;
-  color: white;
-  transform: scale(2) rotate(45deg);
-  bottom: 25%;
-}
+
+

@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const heroTl = gsap.timeline({
       defaults: {
-        ease: 'linear'
+        ease: 'power1.out'
       }
     });
 
@@ -30,7 +30,8 @@ function App() {
           autoAlpha: 1,
           duration: 3,
           delay: 0.5
-        }
+        },
+        0
       )
       .fromTo(
         arrowRef.current,
@@ -39,16 +40,18 @@ function App() {
         },
         {
           autoAlpha: 1,
-          duration: 1,
+          duration: 2,
+          ease: 'linear'
         },
-        '>-=1'
+        '>-=1.5'
       )
       .to(
         arrowRef.current,
         {
           transformOrigin: 'top center',
           scaleY: 1.8,
-          duration: 0.35
+          duration: 0.4,
+          ease: 'power1.in'
         },
         '<'
       )
@@ -64,37 +67,36 @@ function App() {
         arrowRef.current,
         {
           transformOrigin: 'bottom center',
-          scaleY: 1,
-          duration: 0.35
+          scale: 1,
+          duration: 0.4
         },
         '>'
       )
       .to(
         arrowRef.current,
         {
-          yPercent: 100, 
-          repeat: -1, 
+          yPercent: 110,
+          repeat: -1,
           yoyo: true,
-          duration: 1, 
+          duration: 2
         },
         '>'
       );
-  //   gsap.from('.theme-title', {
-  //   autoAlpha: 0,
-  //   y: 40
-  // });
-}, []);
-  
+
+
+
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="title-container">
-        <div ref={titleRef} className="title-text">
+          <div ref={titleRef} className="title-text">
             <p>the story of</p>
             <h1>I C A R U S</h1>
           </div>
-          <div ref={arrowRef} className="title-btn">
-            <IconContext.Provider value={{className: 'arrow-blah' }}>
+          <div ref={arrowRef} className="arrow-btn">
+            <IconContext.Provider value={{ className: 'arrow-icon' }}>
               <GiBranchArrow />
             </IconContext.Provider>
           </div>
