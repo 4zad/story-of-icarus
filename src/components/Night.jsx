@@ -178,8 +178,20 @@ function Night() {
             <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
             <p ref={authorRef}>A Poem by William Carlos Williams</p>
           </div>
-          <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
-          <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
+          <div className="seaTopContainer">
+            <SeaTop
+              className="seaTop"
+              color1={nightColours[1]}
+              color2={nightColours[0]}
+            />
+          </div>
+          <div className="seaBottomContainer">
+            <SeaBottom
+              className="seaBottom"
+              color1={nightColours[1]}
+              color2={nightColours[0]}
+            />
+          </div>
         </div>
         <div
           ref={treeRef}
