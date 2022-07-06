@@ -1,2 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100;200;300;400&family=Permanent+Marker&family=Playfair+Display+SC:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100;200;300;400&family=Permanent+Marker&family=Playfair+Display+SC:wght@400;700&family=Splash&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
 
+.Night {
+  background-color: #2f2d3a;
+  font-family: "Splash", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+    color: #fff;
+    font-size: 3rem;
+}
+
+.poemText {
+    padding: 1rem 3rem;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+}
+
+.titleText {
+  text-align: center;
+  padding: 4rem;
+  color: white;
+}
+
+.titleText > p:nth-child(1) {
+  font-size: 6rem;
+}
+
+.titleText > p {
+  font-size: 1.5rem;
+}
+
+
+
+
+/* DELETE BELOW LATER */
+#page1 {
+    background-color: darkblue;
+}
+#page2 {
+    background-color: rgb(248, 117, 103);
+}
+#page3 {
+    background-color: darkturquoise;
+}
+#page4 {
+    background-color: rgb(175, 76, 175);
+}
+#page5 {
+    background-color: palevioletred;
+}
+#page6 {
+    background-color: darkseagreen;
+}
+#page7{
+    background-color: darksalmon;
+}
