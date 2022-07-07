@@ -8,7 +8,7 @@ function SeaTop(props) {
       id="svg"
       viewBox="0 0 1440 400"
       xmlns="http://www.w3.org/2000/svg"
-      class="transition duration-300 ease-in-out delay-150"
+      className="transition duration-300 ease-in-out delay-150"
     >
       <defs>
         <linearGradient id="seaTop" x1="79%" y1="91%" x2="21%" y2="9%">
@@ -22,7 +22,7 @@ function SeaTop(props) {
         stroke="none"
         strokeWidth="0"
         fill="url(#seaTop)"
-        class="transition-all duration-300 ease-in-out delay-150 path-0"
+        className="transition-all duration-300 ease-in-out delay-150 path-0"
       ></path>
     </svg>
   );

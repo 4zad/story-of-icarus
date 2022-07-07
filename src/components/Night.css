@@ -7,6 +7,8 @@
   font-family: "Splash", cursive;
   font-weight: 400;
   font-style: normal;
+  padding: 0;
+  margin: 0;
 }
 
 p {
@@ -38,32 +40,36 @@ p {
   font-size: 1.5rem;
 }
 
-<<<<<<< HEAD
+.section #page1 {
+    position: relative;
+    background-color: #2F2D3A;
+    height: 100vh;
+}
 
 .poemTitleContainer {
     position: relative;
 }
 
-.seaTopContainer {
-    width: 100%;
+.seaContainer {
     position: absolute;
-    top: 90%;
-    
+    width: 100%;
+    height: fit-content;
+    bottom: 0; 
 }
 
-.seaBottomContainer {
-    width: 100%;
+.seaContainer  > .seaTopContainer{
     position: absolute;
-    top: 100%;
+    width: 100%;
+    bottom: 8%;
 }
 
-=======
->>>>>>> parent of 1cd3ddb (fix: fixed sea svg positioning)
+.seaContainer  > .seaBottomContainer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
 
 /* DELETE BELOW LATER */
-#page1 {
-    background-color: darkblue;
-}
 #page2 {
     background-color: rgb(248, 117, 103);
 }

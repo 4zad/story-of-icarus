@@ -10,13 +10,6 @@ import "./Night.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerEffect({
-  name: "poemTextFade",
-  effect: (targets, config) => {
-    return gsap.from(targets, { autoAlpha: 0 });
-  },
-});
-
 function Night() {
   const nightColours = ["#0F90E6", "#01417A", "#503F90", "#3F3684", "#2F2D3A"];
   const titleTextRef = useRef(null);
@@ -24,23 +17,61 @@ function Night() {
 
   useEffect(() => {
     const loading_tl = gsap.timeline();
+    let sections = document.querySelectorAll(".section");
+
+    sections.forEach((section) => {
+      let lines = section.querySelectorAll("p");
+      let section_tl = gsap.timeline();
+
+      section_tl.fromTo(
+        lines,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          stagger: 0.5,
+          duration: 0.75,
+          ease: "power2",
+        }
+      );
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 50%",
+        toggleActions: "play none none reverse",
+        animation: section_tl,
+        markers: true,
+      });
+    });
 
     loading_tl
-      .from(titleTextRef.current, {
-        duration: 1,
-        autoAlpha: 0,
-        y: -40,
-        ease: "back",
-      })
-      .from(
-        authorRef.current,
+      .fromTo(
+        titleTextRef.current,
         {
-          duration: 1,
           autoAlpha: 0,
-          y: -30,
+          y: -50,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.25,
           ease: "back",
         },
-        "<0.5"
+        0
+      )
+      .fromTo(
+        authorRef.current,
+        {
+          autoAlpha: 0,
+          y: -50,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          ease: "back",
+        },
+        "<0.25"
       );
   }, []);
 
@@ -52,8 +83,14 @@ function Night() {
             <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
             <p ref={authorRef}>A Poem by William Carlos Williams</p>
           </div>
-          <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
-          <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
+        </div>
+        <div className="seaContainer">
+          <div className="seaTopContainer">
+            <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
+          </div>
+          <div className="seaBottomContainer">
+            <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
+          </div>
         </div>
       </section>
       <section className="section" id="page2">
