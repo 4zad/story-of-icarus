@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { IconContext } from "react-icons";
