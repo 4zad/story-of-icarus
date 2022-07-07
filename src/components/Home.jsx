@@ -23,7 +23,7 @@ function Home() {
     });
   }
 
-  const ondayNightPanelHover = (event, isDay) => {
+  const onDayNightPanelHover = (event, isDay) => {
     const gradientChange = isDay ? 10 : 50; // [30 - 10 = 20] | [30 - 50 = -20]
     const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, #${isDay ? '3F368477' : 'FD764D77'} ${isDay ? 30 - gradientChange : 30 - gradientChange}%, #${isDay ? 'FD764D' : '3F3684'} ${isDay ? 100 : 70}%)`;
 
@@ -134,10 +134,10 @@ function Home() {
 
         <section className="panel" id="section2">
           <div className="theme-container" ref={dayNightPanelRef} onMouseOut={console.log('left')}>
-            <div className="night" onMouseOver={event => ondayNightPanelHover(event, false)}>
+            <div className="night" onMouseOver={event => onDayNightPanelHover(event, false)}>
               <h1 className="theme-title">the sea</h1>
             </div>
-            <div className="day" onMouseOver={event => ondayNightPanelHover(event, true)}>
+            <div className="day" onMouseOver={event => onDayNightPanelHover(event, true)}>
               <h1 className="theme-title">the sun</h1>
             </div>
           </div>
