@@ -9,6 +9,7 @@ function SeaTop(props) {
       viewBox="0 0 1440 400"
       xmlns="http://www.w3.org/2000/svg"
 <<<<<<< HEAD
+<<<<<<< HEAD
       className="transition duration-300 ease-in-out delay-150"
     >
       <defs>
@@ -27,6 +28,9 @@ function SeaTop(props) {
       {/* <defs>
 =======
       class="transition duration-300 ease-in-out delay-150"
+=======
+      className="transition duration-300 ease-in-out delay-150"
+>>>>>>> 2df7259 (feature: added animation for poem text)
     >
       <defs>
 >>>>>>> b0e4eb8 (feature: created new components for sea svg, added poem text and typography)
@@ -41,6 +45,7 @@ function SeaTop(props) {
         stroke="none"
         strokeWidth="0"
         fill="url(#seaTop)"
+<<<<<<< HEAD
 <<<<<<< HEAD
         className="transition-all duration-300 ease-in-out delay-150 path-0"
       ></path> */}
@@ -71,6 +76,9 @@ function SeaTop(props) {
 </svg>;
 =======
         class="transition-all duration-300 ease-in-out delay-150 path-0"
+=======
+        className="transition-all duration-300 ease-in-out delay-150 path-0"
+>>>>>>> 2df7259 (feature: added animation for poem text)
       ></path>
     </svg>
   );
