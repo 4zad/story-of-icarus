@@ -110,8 +110,6 @@ function Home() {
         },
         ">"
       );
-
-    // vertical snap animation
   }, []);
 
   return (

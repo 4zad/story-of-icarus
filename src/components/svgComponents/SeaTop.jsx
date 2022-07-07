@@ -11,6 +11,19 @@ function SeaTop(props) {
       className="transition duration-300 ease-in-out delay-150"
     >
       <defs>
+        <linearGradient id="seaTop" x1="55%" y1="100%" x2="45%" y2="0%">
+          <stop offset="20%" stopColor={props.color1}></stop>
+          <stop offset="80%" stopColor={props.color2}></stop>
+        </linearGradient>
+      </defs>
+      <path
+        d="M 0,400 C 0,400 0,133 0,133 C 188.13333333333333,145.66666666666666 376.26666666666665,158.33333333333331 553,167 C 729.7333333333333,175.66666666666669 895.0666666666668,180.33333333333334 1041,174 C 1186.9333333333332,167.66666666666666 1313.4666666666667,150.33333333333331 1440,133 C 1440,133 1440,400 1440,400 Z"
+        stroke="none"
+        strokeWidth="0"
+        fill="url(#gradient)"
+        className="transition-all duration-300 ease-in-out delay-150 path-0"
+      ></path>
+      {/* <defs>
         <linearGradient id="seaTop" x1="79%" y1="91%" x2="21%" y2="9%">
           <stop offset="20%" stopColor={props.color1}></stop>
           <stop offset="80%" stopColor={props.color2}></stop>
@@ -23,9 +36,30 @@ function SeaTop(props) {
         strokeWidth="0"
         fill="url(#seaTop)"
         className="transition-all duration-300 ease-in-out delay-150 path-0"
-      ></path>
+      ></path> */}
     </svg>
   );
 }
-
+<svg
+  width="100%"
+  height="100%"
+  id="svg"
+  viewBox="0 0 1440 400"
+  xmlns="http://www.w3.org/2000/svg"
+  class="transition duration-300 ease-in-out delay-150"
+>
+  <defs>
+    <linearGradient id="gradient" x1="79%" y1="91%" x2="21%" y2="9%">
+      <stop offset="5%" stop-color="#014c8dff"></stop>
+      <stop offset="95%" stop-color="#0c78c0ff"></stop>
+    </linearGradient>
+  </defs>
+  <path
+    d="M 0,400 C 0,400 0,266 0,266 C 165.7333333333333,242.66666666666669 331.4666666666666,219.33333333333334 481,234 C 630.5333333333334,248.66666666666666 763.8666666666666,301.3333333333333 921,313 C 1078.1333333333334,324.6666666666667 1259.0666666666666,295.33333333333337 1440,266 C 1440,266 1440,400 1440,400 Z"
+    stroke="none"
+    stroke-width="0"
+    fill="url(#gradient)"
+    class="transition-all duration-300 ease-in-out delay-150 path-1"
+  ></path>
+</svg>;
 export default SeaTop;
