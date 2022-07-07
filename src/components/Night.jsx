@@ -1,9 +1,10 @@
 import React from "react";
 
+import { nightColors } from "../data/data"
+
 import "./Night.css";
 
 function Night() {
-  const nightColours = ["#0C78C0", "#014C8D", "#503F90", "#3F3684", "#2F2D3A"];
 
   return (
     <div>
