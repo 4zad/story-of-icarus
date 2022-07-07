@@ -101,18 +101,18 @@ ul {
   background: linear-gradient(90deg, #3F3684 30%, #FD764D 100%);
 }
 
-.day {
+.day, .night {
   width: 50%;
   height: 100%;
   display: inline-block;
+}
+
+.day {
   /* background: linear-gradient(170deg, #282c34 11.5%, #FD764D 100%); */
   background: linear-gradient(170deg, #282c34 11.5%, #FD764D00 100%);
 }
 
 .night {
-  width: 50%;
-  height: 100%;
-  display: inline-block;
   /* background: linear-gradient(-170deg, #282c34 11.5%, #3F3684 100%); */
   background: linear-gradient(-170deg, #282c34 11.5%, #3F368400 100%);
 }

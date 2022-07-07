@@ -14,13 +14,32 @@ gsap.registerPlugin(ScrollToPlugin);
 function Home() {
   const titleRef = useRef(null);
   const arrowRef = useRef(null);
+  const dayNightPanelRef = useRef(null);
 
-  function onArrowClick() {
+  const onArrowClick = (event) => {
     gsap.to(window, {
       duration: 0.25,
       scrollTo: "#section2",
     });
   }
+
+  const ondayNightPanelHover = (event, isDay) => {
+    const gradientChange = isDay ? 10 : 50; // [30 - 10 = 20] | [30 - 50 = -20]
+    const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, #${isDay ? '3F368477' : 'FD764D77'} ${isDay ? 30 - gradientChange : 30 - gradientChange}%, #${isDay ? 'FD764D' : '3F3684'} ${isDay ? 100 : 70}%)`;
+
+    gsap.to(
+      dayNightPanelRef.current,
+      {
+        backgroundImage: gradientNew,
+        duration: 0.5,
+        ease: "circ.out"
+      }
+    );
+
+    console.log(gradientNew)
+  }
+
+  
 
   useEffect(() => {
     const heroTl = gsap.timeline({
@@ -105,7 +124,7 @@ function Home() {
               <p>the story of</p>
               <h1>I C A R U S</h1>
             </div>
-            <div ref={arrowRef} className="arrow-btn" onClick={onArrowClick}>
+            <div ref={arrowRef} className="arrow-btn" onClick={event => onArrowClick(event)}>
               <IconContext.Provider value={{ className: "arrow-icon" }}>
                 <GiBranchArrow />
               </IconContext.Provider>
@@ -114,11 +133,11 @@ function Home() {
         </section>
 
         <section className="panel" id="section2">
-          <div className="theme-container">
-            <div className="night">
+          <div className="theme-container" ref={dayNightPanelRef} onMouseOut={console.log('left')}>
+            <div className="night" onMouseOver={event => ondayNightPanelHover(event, false)}>
               <h1 className="theme-title">the sea</h1>
             </div>
-            <div className="day">
+            <div className="day" onMouseOver={event => ondayNightPanelHover(event, true)}>
               <h1 className="theme-title">the sun</h1>
             </div>
           </div>
