@@ -20,16 +20,37 @@ gsap.registerEffect({
 function Night() {
   const nightColours = ["#0F90E6", "#01417A", "#503F90", "#3F3684", "#2F2D3A"];
   const titleTextRef = useRef(null);
+  const authorRef = useRef(null);
 
-  useEffect(() => {});
+  useEffect(() => {
+    const loading_tl = gsap.timeline();
+
+    loading_tl
+      .from(titleTextRef.current, {
+        duration: 1,
+        autoAlpha: 0,
+        y: -40,
+        ease: "back",
+      })
+      .from(
+        authorRef.current,
+        {
+          duration: 1,
+          autoAlpha: 0,
+          y: -30,
+          ease: "back",
+        },
+        "<0.5"
+      );
+  }, []);
 
   return (
     <div className="Night">
       <section className="section" id="page1">
         <div className="poemTitleContainer">
-          <div ref={titleTextRef} className="titleText">
-            <p>Landscape with the Fall of Icarus</p>
-            <p>A Poem by William Carlos Williams</p>
+          <div className="titleText">
+            <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
+            <p ref={authorRef}>A Poem by William Carlos Williams</p>
           </div>
           <div className="seaTopContainer">
             <SeaTop
