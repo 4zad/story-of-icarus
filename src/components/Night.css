@@ -83,6 +83,27 @@ p {
 /* ======================= Page 4 ======================= */
 
 /* ======================= Page 5 ======================= */
+
+.section:nth-child(5) > .poemText {
+    padding-top: 15%;
+    border: 1px solid green;
+}
+
+.wingsContainer {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 15%;
+}
+.wings {
+    height: 75vh;
+    /* transform: scale(0.8); */
+}
+/* ======================= Page 6 ======================= */
 .rocksContainer {
     position: absolute;
     width: 100%;
@@ -110,19 +131,7 @@ p {
     position: absolute;
     width: 100%;
 }
-/* ======================= Page 6 ======================= */
 
-.wingsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    bottom: 0;
-}
-.wings {
-    transform: scale(0.35);
-    position: absolute;
-}
 
 
 /* ======================= Page 7 ======================= */
@@ -141,6 +150,7 @@ p {
     background-color: rgb(175, 76, 175);
 }
 #page5 {
+    text-align: center;
     position: relative;
     background-color: palevioletred;
 }
