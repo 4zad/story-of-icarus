@@ -85,6 +85,19 @@ function Night() {
         markers: true
       }});
 
+      // Page 5 - wing animation
+      const wings_tl = gsap.timeline()
+      .to(".wings", {
+        scaleX: 1.2,
+        // transformOrigin: "center center",
+        translateY: 20,
+        duration: 1,
+        yoyo: true,
+        repeat: -1
+      })
+
+
+      // Page 6 - rock parallax
       gsap.utils.toArray(".rock").forEach(rockLayer => {
         const depth = rockLayer.dataset.depth;
         const movement = -(rockLayer.offsetHeight * depth);
