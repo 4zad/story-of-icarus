@@ -54,6 +54,7 @@ p {
 
 
 .seaContainer {
+    z-index: 1;
     position: absolute;
     width: 100%;
     height: fit-content;
@@ -63,13 +64,23 @@ p {
 .seaContainer  > .seaTopContainer{
     position: absolute;
     width: 100%;
-    bottom: 5%;
+    bottom: 10%;
+    /* height: inherit; */
 }
 
 .seaContainer  > .seaBottomContainer{
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+
+.titlePageBlockColour {
+    z-index: 0;
+    background: #01417A;
+    height: 10vh;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 /* ======================= Page 2 =======================*/
@@ -85,7 +96,8 @@ p {
 /* ======================= Page 5 ======================= */
 
 .section:nth-child(5) > .poemText {
-    padding-top: 15%;
+    position: absolute;
+    top: 15%;
     border: 1px solid green;
 }
 
@@ -101,10 +113,12 @@ p {
 }
 .wings {
     height: 75vh;
+    width: 80%;
     /* transform: scale(0.8); */
 }
 /* ======================= Page 6 ======================= */
 .rocksContainer {
+    z-index: 0;
     position: absolute;
     width: 100%;
     height: fit-content;
@@ -124,13 +138,14 @@ p {
     height: 3vh;
 } */
 
-.pg6BlockColour {
+/* .pg6BlockColour {
+    z-index: 1;
     background: rgb(47,45,58);
-    height: 1vh;
+    height: 8vh;
     bottom: 0;
     position: absolute;
     width: 100%;
-}
+} */
 
 
 
@@ -150,6 +165,9 @@ p {
     background-color: rgb(175, 76, 175);
 }
 #page5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     position: relative;
     background-color: palevioletred;
