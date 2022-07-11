@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./components/Home";
 import Day from "./components/Day";
 import Night from "./components/Night";
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/day" element={<Day />} />

@@ -179,27 +179,23 @@ function Night() {
             <p ref={authorRef}>A Poem by William Carlos Williams</p>
           </div>
         </div>
-        <div className="seaContainer">
-          <div className="seaTopContainer">
-            <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
-          </div>
-          <div className="seaBottomContainer">
-            <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
-          </div>
-        </div>
+
         <div
           ref={treeRef}
           className="treesBg titleParallax"
           data-depth="0.1"
         ></div>
+
         <div className="seaContainer">
           <div className="seaTopContainer titleParallax" data-depth="0.3">
             <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
           </div>
+
           <div className="seaBottomContainer titleParallax" data-depth="0.40">
             <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
           </div>
         </div>
+
         <div className="titlePageBlockColour"></div>
       </section>
 
@@ -209,6 +205,7 @@ function Night() {
           <p>when Icarus fell</p>
           <p>it was spring</p>
         </div>
+
         <div className="treesContainer">
           <Trees />
         </div>
@@ -223,6 +220,7 @@ function Night() {
           </div>
           <br />
           <br />
+
           <div className="poemText3-2">
             <p>of the year was</p>
             <p>awake tingling</p>
@@ -245,6 +243,7 @@ function Night() {
           <p>that melted</p>
           <p>the wings' wax</p>
         </div>
+
         <div className="wingsContainer">
           <img className="wings" src={wings} />
         </div>
@@ -256,14 +255,18 @@ function Night() {
           <p>off the coast</p>
           <p>there was</p>
         </div>
+
         <div className="pg6BlockColour"></div>
+
         <div className="rocksContainer">
           <div className="rock3container">
             <img className="rock rock3" data-depth="0.075" src={rock3} />
           </div>
+
           <div className="rock2container">
             <img className="rock rock2" data-depth="0.30" src={rock2} />
           </div>
+
           <div className="rock1container">
             <img className="rock rock1" data-depth="0.70" src={rock1} />
           </div>
@@ -276,6 +279,7 @@ function Night() {
           <p>this was</p>
           <p>Icarus drowning</p>
         </div>
+        
         <img className="icarusDrowning" src={icarusDrowning} />
       </section>
     </div>
