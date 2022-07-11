@@ -126,15 +126,15 @@ ul {
   top: 50%;
   transform: translateY(-50%);
 }
-.day:hover > .theme-title {
+/* .day:hover > .theme-title {
   text-shadow: 0px 0px 4px #FD764D, 0px 0px 8px #FD764D, 0px 0px 16px #FD764D, 0px 0px 32px #FD764D;
   transition: 0.9s cubic-bezier(0,.66,.33,1) 0.1s;
-  /* transition: <property> <duration> <timing-function> <delay>; */
+  /* transition: <property> <duration> <timing-function> <delay>; *\/
 }
 .night:hover > .theme-title {
   text-shadow: 0px 0px 4px #503F90, 0px 0px 8px #503F90, 0px 0px 16px #503F90, 0px 0px 32px #503F90, 0px 0px 2px #503F90, 0px 0px 6px #503F90, 0px 0px 12px #503F90;
   transition: 0.9s cubic-bezier(0,.66,.33,1) 0.1s;
-  /* transition: <property> <duration> <timing-function> <delay>; */
-}
+  /* transition: <property> <duration> <timing-function> <delay>; *\/
+} */
 
 

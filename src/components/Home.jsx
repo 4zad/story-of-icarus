@@ -17,8 +17,6 @@ function Home() {
   const titleRef = useRef(null);
   const arrowRef = useRef(null);
   const dayNightPanelRef = useRef(null);
-  const nightTitleRef = useRef(null);
-  const dayTitleRef = useRef(null);
 
   const onArrowClick = (event) => {
     gsap.to(window, {
@@ -28,35 +26,45 @@ function Home() {
   }
 
   const onDayNightPanelLeave = (event) => {
-    // ternary operator -> if the mouse left the menu panel from the left half then `linear-gradient(90deg, #3F3684 30%, #FD764D 100%)` else
-    const defaultGradient = event.innerwidth < (event.view.innerwidth / 2) ? `linear-gradient(90deg, #3F3684 30%, #FD764D 100%)` : `linear-gradient(270deg, #FD764D 0%, #3F3684 60%)`;
+    // ternary operator -> if the mouse left the menu panel from the left half then `linear-gradient(90deg, #3F3684 30%, #FD764D 100%)` else `linear-gradient(270deg, #FD764D 0%, #3F3684 70%)`
+    const defaultGradient = event.pageX < (document.body.offsetWidth / 2) ? `linear-gradient(90deg, #3F3684 30%, #FD764D 100%)` : `linear-gradient(270deg, #FD764D 0%, #3F3684 70%)`;
+    // console.log(event.pageX < (document.body.offsetWidth / 2)); // test to see whether event object calculation is returning correct values
+    // console.log(event.pageX < (event.view.innerWidth / 2)); // less safe alternative to the above because it uses viewport width and not the webpage width
 
-    console.log(event)
-    const leaveTl = gsap.timeline({
-      defaults: {
+    gsap.to(
+      dayNightPanelRef.current,
+      {
+        backgroundImage: defaultGradient,
         duration: 0.5,
-        ease: "circ.inout"
+        ease: "circ.inout",
+        overwrite: true
       }
-    });
+    );
+  }
 
-    leaveTl
-      .to(
-        dayNightPanelRef.current,
-        {
-          backgroundImage: defaultGradient,
-        }
-      );
+  const onDayNightPanelOut = (event) => {
+  console.log(event)
+
+    gsap.to(
+      event.target,
+      {
+        textShadow: 'none',
+        duration: 0.5,
+        ease: "circ.inout",
+        overwrite: true
+      }
+    );
   }
 
   const onDayNightPanelHover = (event, isDay) => {
     // [30 - 30 = 0] -> when day selected night color starts at 0 from the left
     // [30 - 50 = -20] -> when night selected day color starts at -20 from the right
     const gradientChange = isDay ? 30 : 50;
-    // const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, #${isDay ? nightColors[3] : dayColors[4]}77 ${isDay ? 30 - gradientChange : 30 - gradientChange}%, #${isDay ? dayColors[4] : nightColors[3]} ${isDay ? 100 : 80}%)`;
-    // const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, #${isDay ? `${nightColors[3]}77` : `${dayColors[4]}77`} ${isDay ? 30 - gradientChange : 30 - gradientChange}%, #${isDay ? dayColors[4] : nightColors[3]} ${isDay ? 100 : 80}%)`;
-    const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, #${isDay ? `3F368477` : `FD764D77`} ${isDay ? 30 - gradientChange : 30 - gradientChange}%, #${isDay ? 'FD764D' : '3F3684'} ${isDay ? 100 : 80}%)`;
+    const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, ${isDay ? nightColors[3] : dayColors[4]}77 ${isDay ? 30 - gradientChange : 30 - gradientChange}%, ${isDay ? dayColors[4] : nightColors[3]} ${isDay ? 100 : 80}%)`;
+    // console.log(gradientNew); // test to see if correct gradient string is being output in its respective situation
 
-    // const textShadowNew = `0px 0px 4px ${isDay ? dayColours[4] : nightColours[2]}, 0px 0px 8px ${isDay ? dayColours[4] : nightColours[2]}, 0px 0px 16px ${isDay ? dayColours[4] : nightColours[2]}, 0px 0px 32px ${isDay ? dayColours[4] : nightColours[2]} ${isDay ? `` : `, 0px 0px 2px ${nightColours[2]}, 0px 0px 6px ${nightColours[2]} 0px 0px 12px ${nightColours[2]}`}`;
+    const textShadowNew = `0px 0px 4px ${isDay ? dayColors[4] : nightColors[2]}, 0px 0px 8px ${isDay ? dayColors[4] : nightColors[2]}, 0px 0px 16px ${isDay ? dayColors[4] : nightColors[2]}, 0px 0px 32px ${isDay ? dayColors[4] : nightColors[2]}${isDay ? `` : `, 0px 0px 2px ${nightColors[2]}, 0px 0px 6px ${nightColors[2]}, 0px 0px 12px ${nightColors[2]}`}`;
+    // console.log(textShadowNew); // test to see if correct text shadow string is being output in its respective situation
 
     const hoverTl = gsap.timeline({
       defaults: {
@@ -71,16 +79,15 @@ function Home() {
         {
           backgroundImage: gradientNew,
         }
+      )
+      .to(
+        // isDay ? dayTitleRef.current : nightTitleRef.current,
+        event.target,
+        {
+          textShadow: textShadowNew
+        },
+        '<'
       );
-    // .to(
-    //   isDay ? dayTitleRef.current : nightTitleRef.current,
-    //   {
-    //     textShadow: textShadowNew
-    //   },
-    //   '<'
-    // );
-
-    // console.log(gradientNew)
   }
 
 
@@ -183,16 +190,18 @@ function Home() {
               to={"./night"}
               className="night"
               onMouseOver={event => onDayNightPanelHover(event, false)}
+              onMouseLeave={event => onDayNightPanelOut(event)}
             >
-              <h1 className="theme-title" id="night-theme-title" ref={nightTitleRef}>the sea</h1>
+              <h1 className="theme-title" id="night-theme-title">the sea</h1>
             </Link>
 
             <Link
               to={"./day"}
               className="day"
               onMouseOver={event => onDayNightPanelHover(event, true)}
+              onMouseLeave={event => onDayNightPanelOut(event)}
             >
-              <h1 className="theme-title" id="day-theme-title" ref={dayTitleRef}>the sun</h1>
+              <h1 className="theme-title" id="day-theme-title">the sun</h1>
             </Link>
           </div>
         </section>
