@@ -3,8 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100;200;300;400&family=Permanent+Marker&family=Playfair+Display+SC:wght@400;700&family=Splash&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
 
 .Night {
-    background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 10%);
+  background: rgb(2, 0, 36);
   font-family: "Splash", cursive;
   font-weight: 400;
   font-style: normal;
@@ -14,15 +13,16 @@
 }
 
 p {
-    color: #fff;
-    font-size: 2.5rem;
+  color: #fff;
+  font-size: 2.5rem;
 }
 
 .poemText {
-    padding: 1rem 3rem;
+  padding: 1rem 3rem;
 }
 
-.section, .headerSection {
+.section,
+.headerSection {
   width: 100vw;
   height: 100vh;
 }
@@ -42,53 +42,59 @@ p {
   font-size: 1.5rem;
 }
 
-.header #page1 {
-    position: relative;
-    background-color: #2F2D3A;
-    height: 100vh;
+.headerSection {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 100%
+  );
 }
 
 .poemTitleContainer {
-    position: relative;
+  position: relative;
 }
-
 
 .seaContainer {
-    z-index: 1;
-    position: absolute;
-    width: 100%;
-    height: fit-content;
-    bottom: 0; 
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  bottom: 0;
 }
 
-.seaContainer  > .seaTopContainer{
-    position: absolute;
-    width: 100%;
-    bottom: 10%;
-    /* height: inherit; */
+.seaContainer > .seaTopContainer {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  /* height: inherit; */
 }
 
-.seaContainer  > .seaBottomContainer{
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+.seaContainer > .seaBottomContainer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .titlePageBlockColour {
-    z-index: 0;
-    background: #01417A;
-    height: 10vh;
-    bottom: 0;
-    position: absolute;
-    width: 100%;
+  z-index: 0;
+  position: absolute;
+  background: #01417a;
+  width: 100%;
+  height: 20vh;
+  bottom: 0;
+}
+
+.treesBg {
+  background-image: url("../assets/png/trees.png");
+  background-repeat: repeat-x;
+  /* filter: invert(); */
+  height: 500px;
+  margin: 96px 0 auto;
 }
 
 /* ======================= Page 2 =======================*/
-.treesBg {
-    height: 300px;
-    background-image: url("../assets/png/trees.png");
-    background-repeat: repeat-x;
-}
+
 /* ======================= Page 3 ======================= */
 
 /* ======================= Page 4 ======================= */
@@ -96,39 +102,39 @@ p {
 /* ======================= Page 5 ======================= */
 
 .section:nth-child(5) > .poemText {
-    position: absolute;
-    top: 15%;
-    border: 1px solid green;
+  position: absolute;
+  top: 15%;
+  border: 1px solid green;
 }
 
 .wingsContainer {
-    position: absolute;
-    width: 100%;
-    height: fit-content;
-    border: 1px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 15%;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 15%;
 }
 .wings {
-    height: 75vh;
-    width: 80%;
-    /* transform: scale(0.8); */
+  height: 75vh;
+  width: 80%;
+  /* transform: scale(0.8); */
 }
 /* ======================= Page 6 ======================= */
 .rocksContainer {
-    z-index: 0;
-    position: absolute;
-    width: 100%;
-    height: fit-content;
-    bottom: 0; 
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  bottom: 0;
 }
 
 .rock {
-    position: absolute;
-    bottom: 0;
-    transform: scaleX(1.5);
+  position: absolute;
+  bottom: 0;
+  transform: scaleX(1.5);
 }
 
 /* .rock:nth-child(1)::after {
@@ -138,46 +144,62 @@ p {
     height: 3vh;
 } */
 
-/* .pg6BlockColour {
-    z-index: 1;
-    background: rgb(47,45,58);
-    height: 8vh;
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-} */
-
-
+.pg6BlockColour {
+  z-index: 1;
+  background: rgb(47, 45, 58);
+  height: 5vh;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
 
 /* ======================= Page 7 ======================= */
 
+.section:nth-child(7) > .poemText {
+  position: absolute;
+  top: 0;
+}
+
+.icarusDrowning {
+  transform: scale(1.5) rotate(-90deg);
+  position: absolute;
+  top: 35%;
+}
+
 /* DELETE BELOW LATER */
 #page2 {
-    position: relative;
-    background-color: #01417A;
+  position: relative;
+  background-color: #01417a;
 }
 #page3 {
-    position: relative;
-    background-color: darkturquoise;
+  position: relative;
+  background-color: darkturquoise;
 }
 #page4 {
-    position: relative;
-    background-color: rgb(175, 76, 175);
+  position: relative;
+  background-color: rgb(175, 76, 175);
 }
 #page5 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    background-color: palevioletred;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background-color: palevioletred;
 }
 #page6 {
-    position: relative;
-    background-color: darkseagreen;
+  position: relative;
+  background-color: darkseagreen;
 }
-#page7{
-    position: relative;
-    background: rgb(47,45,58);
-background: linear-gradient(180deg, rgba(47,45,58,1) 0%, rgba(0,0,0,1) 85%);
+#page7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgb(47, 45, 58);
+  background: linear-gradient(
+    180deg,
+    rgba(47, 45, 58, 1) 0%,
+    rgb(16, 16, 16) 85%
+  );
 }

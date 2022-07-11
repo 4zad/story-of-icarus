@@ -6,12 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SeaTop from "../components/svgComponents/SeaTop";
 import SeaBottom from "../components/svgComponents/SeaBottom";
 import Trees from "../components/svgComponents/Trees";
-import Rocks1 from "../components/svgComponents/Rocks1";
 
 import wings from "../assets/svg/wings.svg";
 import rock1 from "../assets/svg/rock1.svg";
 import rock2 from "../assets/svg/rock2.svg";
 import rock3 from "../assets/svg/rock3.svg";
+import icarusDrowning from "../assets/png/icarus-drowning.png";
 
 import "./Night.css";
 
@@ -75,9 +75,6 @@ function Night() {
       const movement = -(titleLayer.offsetHeight * depth);
       title_para_tl.to(titleLayer, { y: movement, ease: "none" }, 0);
     });
-    // title_para_tl.to(treeRef.current, {y: -75}, 0)
-    // .to(".seaTopContainer", {y: -100}, 0)
-    // .to(".seaBottomContainer", {y: -175}, 0)
 
     // Page 5 - wing animation
     const wings_tl = gsap
@@ -108,8 +105,44 @@ function Night() {
     });
 
     // Increase height of block colour
-    // gsap.set(".pg6BlockColour", {transformOrigin: "bottom center"});
-    // rock_para_tl.to(".pg6BlockColour", {scaleY: 3.5}, 0);
+    gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
+    rock_para_tl.to(".pg6BlockColour", { scaleY: 3.5 }, 0);
+
+    // Page 7 animation
+    const drowning_tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page7",
+        start: "top 30%",
+        toggleActions: "restart none none reset",
+        markers: true,
+      },
+    });
+    drowning_tl
+      .fromTo(
+        ".icarusDrowning",
+        {
+          autoAlpha: 0,
+          y: -400,
+        },
+        {
+          autoAlpha: 1,
+          y: 200,
+          ease: "expo.out",
+          duration: 2,
+        }
+      )
+      .to(
+        ".icarusDrowning",
+        {
+          y: 100,
+          duration: 3,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true,
+          overwrite: true,
+        },
+        ">-=0.25"
+      );
 
     // poem text fade-in animation
     sections.forEach((section) => {
@@ -218,13 +251,13 @@ function Night() {
         <div className="pg6BlockColour"></div>
         <div className="rocksContainer">
           <div className="rock3container">
-            <img className="rock rock3" data-depth="0.05" src={rock3} />
+            <img className="rock rock3" data-depth="0.075" src={rock3} />
           </div>
           <div className="rock2container">
-            <img className="rock rock2" data-depth="0.2" src={rock2} />
+            <img className="rock rock2" data-depth="0.30" src={rock2} />
           </div>
           <div className="rock1container">
-            <img className="rock rock1" data-depth="0.4" src={rock1} />
+            <img className="rock rock1" data-depth="0.70" src={rock1} />
           </div>
         </div>
       </section>
@@ -235,6 +268,7 @@ function Night() {
           <p>this was</p>
           <p>Icarus drowning</p>
         </div>
+        <img className="icarusDrowning" src={icarusDrowning} />
       </section>
     </div>
   );
