@@ -5,6 +5,7 @@ import { GiBranchArrow } from "react-icons/gi";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { CSSPlugin } from "gsap/CSSPlugin";
 
 import { nightColors, dayColors } from "../data/data"
 
@@ -12,12 +13,15 @@ import "./Home.css";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(CSSPlugin);
 
 function Home() {
+  // --- REFERENCES --- 
   const titleRef = useRef(null);
   const arrowRef = useRef(null);
   const dayNightPanelRef = useRef(null);
 
+  // --- EVENT TRIGGERS --- 
   const onArrowClick = (event) => {
     gsap.to(window, {
       duration: 0.25,
@@ -42,11 +46,9 @@ function Home() {
     );
   }
 
-  const onDayNightPanelOut = (event) => {
-  console.log(event)
-
+  const onDayNightOptionsLeave = (event) => {
     gsap.to(
-      event.target,
+      event.target.childNodes[0],
       {
         textShadow: 'none',
         duration: 0.5,
@@ -56,10 +58,12 @@ function Home() {
     );
   }
 
-  const onDayNightPanelHover = (event, isDay) => {
-    // [30 - 30 = 0] -> when day selected night color starts at 0 from the left
-    // [30 - 50 = -20] -> when night selected day color starts at -20 from the right
-    const gradientChange = isDay ? 30 : 50;
+  const onDayNightPanelHover = (event) => {
+    const isDay = (event.target.className == 'day') || (event.relatedTarget.className == 'day' && event.target.className == 'theme-title' && event.target.id == 'day-theme-title') ? true : false;
+    // console.log(isDay); // test to see if correct boolean value for isDay is being output based on  its respective event trigger element
+
+    const gradientChange = isDay ? 30 : 50; // [30 - 30 = 0] -> when day selected night color starts at 0 from the left
+                                            // [30 - 50 = -20] -> when night selected day color starts at -20 from the right
     const gradientNew = `linear-gradient(${isDay ? 90 : 270}deg, ${isDay ? nightColors[3] : dayColors[4]}77 ${isDay ? 30 - gradientChange : 30 - gradientChange}%, ${isDay ? dayColors[4] : nightColors[3]} ${isDay ? 100 : 80}%)`;
     // console.log(gradientNew); // test to see if correct gradient string is being output in its respective situation
 
@@ -81,8 +85,7 @@ function Home() {
         }
       )
       .to(
-        // isDay ? dayTitleRef.current : nightTitleRef.current,
-        event.target,
+        event.target.childNodes[0],
         {
           textShadow: textShadowNew
         },
@@ -90,8 +93,7 @@ function Home() {
       );
   }
 
-
-
+  // --- ON PAGE LOAD --- 
   useEffect(() => {
     const heroTl = gsap.timeline({
       defaults: {
@@ -189,8 +191,8 @@ function Home() {
             <Link
               to={"./night"}
               className="night"
-              onMouseOver={event => onDayNightPanelHover(event, false)}
-              onMouseLeave={event => onDayNightPanelOut(event)}
+              onMouseOver={event => onDayNightPanelHover(event)}
+              onMouseLeave={event => onDayNightOptionsLeave(event)}
             >
               <h1 className="theme-title" id="night-theme-title">the sea</h1>
             </Link>
@@ -198,8 +200,8 @@ function Home() {
             <Link
               to={"./day"}
               className="day"
-              onMouseOver={event => onDayNightPanelHover(event, true)}
-              onMouseLeave={event => onDayNightPanelOut(event)}
+              onMouseOver={event => onDayNightPanelHover(event)}
+              onMouseLeave={event => onDayNightOptionsLeave(event)}
             >
               <h1 className="theme-title" id="day-theme-title">the sun</h1>
             </Link>
