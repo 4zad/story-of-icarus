@@ -76,6 +76,27 @@ function Night() {
       title_para_tl.to(titleLayer, { y: movement, ease: "none" }, 0);
     });
 
+    // Page 3 - pinning animation
+    const pin_tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".pinContainer",
+        start: "top top",
+        scrub: true,
+        markers: true,
+        pin: true,
+        end: "+=200%",
+      },
+    });
+    pin_tl
+      .to("#page2", {
+        yPercent: -100,
+        ease: "none",
+      })
+      .to("#page3", {
+        yPercent: -100,
+        ease: "none",
+      });
+
     // Page 5 - wing animation
     const wings_tl = gsap
       .timeline({ defaults: { overwrite: true } })
@@ -95,7 +116,7 @@ function Night() {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
     gsap.utils.toArray(".rock").forEach((rockLayer) => {
@@ -114,7 +135,6 @@ function Night() {
         trigger: "#page7",
         start: "top 30%",
         toggleActions: "restart none none reset",
-        markers: true,
       },
     });
     drowning_tl
@@ -199,35 +219,39 @@ function Night() {
         <div className="titlePageBlockColour"></div>
       </section>
 
-      <section className="section" id="page2">
-        <div className="poemText">
-          <p>According to Brueghel</p>
-          <p>when Icarus fell</p>
-          <p>it was spring</p>
-        </div>
-
-        <div className="treesContainer">
-          <Trees />
-        </div>
-      </section>
-
-      <section className="section" id="page3">
-        <div className="poemText">
-          <div className="poemText3-1">
-            <p>a farmer was ploughing</p>
-            <p>his field</p>
-            <p>the whole pageantry</p>
+      <div className="pinContainer">
+        <section className="section" id="page2">
+          <div className="page2Container">
+            <div className="poemText">
+              <p>According to Brueghel</p>
+              <p>when Icarus fell</p>
+              <p>it was spring</p>
+            </div>
+            <div className="treesContainer">
+              <Trees />
+            </div>
           </div>
-          <br />
-          <br />
+        </section>
 
-          <div className="poemText3-2">
-            <p>of the year was</p>
-            <p>awake tingling</p>
-            <p>near</p>
+        <section className="section" id="page3">
+          <div className="page3Container">
+            <div className="poemText">
+              <div className="poemText3-1">
+                <p>a farmer was ploughing</p>
+                <p>his field</p>
+                <p>the whole pageantry</p>
+              </div>
+              <br />
+              <br />
+              <div className="poemText3-2">
+                <p>of the year was</p>
+                <p>awake tingling</p>
+                <p>near</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <section className="section" id="page4">
         <div className="poemText">
@@ -279,7 +303,7 @@ function Night() {
           <p>this was</p>
           <p>Icarus drowning</p>
         </div>
-        
+
         <img className="icarusDrowning" src={icarusDrowning} />
       </section>
     </div>

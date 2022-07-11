@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Inter:wght@100;200;300;400&family=Permanent+Marker&family=Playfair+Display+SC:wght@400;700&family=Splash&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
 
 .Night {
+  z-index: -1;
   background: rgb(2, 0, 36);
   font-family: "Splash", cursive;
   font-weight: 400;
@@ -81,7 +82,7 @@ p {
   position: absolute;
   background: #01417a;
   width: 100%;
-  height: 20vh;
+  height: 10vh;
   bottom: 0;
 }
 
@@ -94,8 +95,14 @@ p {
 }
 
 /* ======================= Page 2 =======================*/
+.page2Container {
+  position: relative;
+}
 
 /* ======================= Page 3 ======================= */
+.page3Container {
+  position: relative;
+}
 
 /* ======================= Page 4 ======================= */
 
@@ -104,14 +111,12 @@ p {
 .section:nth-child(5) > .poemText {
   position: absolute;
   top: 15%;
-  border: 1px solid green;
 }
 
 .wingsContainer {
   position: absolute;
   width: 100%;
   height: fit-content;
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,11 +173,18 @@ p {
 
 /* DELETE BELOW LATER */
 #page2 {
-  position: relative;
+  z-index: 5;
+  position: absolute;
+  top: 100%;
+  left: 0;
   background-color: #01417a;
 }
 #page3 {
-  position: relative;
+  z-index: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 3px red solid;
   background-color: darkturquoise;
 }
 #page4 {
