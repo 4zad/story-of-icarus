@@ -169,7 +169,7 @@ function Night() {
         ".wings",
         {
           scaleX: 1.2,
-          // transformOrigin: "center center",
+          transformOrigin: "center center",
           translateY: 20,
           duration: 1,
           yoyo: true,
