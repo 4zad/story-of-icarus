@@ -119,14 +119,35 @@ p {
 
 .section:nth-child(2) .poemText3-1 {
   position: absolute;
-  top: 100%;
-  left: 5%;
+  top: 70%;
+  left: 10%;
 }
 .section:nth-child(2) .poemText3-2 {
   position: absolute;
   top: 300%;
   right: 5%;
 }
+
+.farmContainer {
+  position: absolute;
+  top: 100%;
+  transform: translate(50%, 30%) scaleX(1.6);
+}
+
+.grassContainer {
+  /* position: absolute; */
+}
+.grass {
+  position: absolute;
+  background-image: url("../assets/svg/grass2.svg");
+  background-repeat: repeat-x;
+  top: -0;
+   left: 0;
+  height: 500px;
+  margin: 96px 0 auto;
+  transform: translate(50%, 30%);
+}
+
 
 .icarusFlying {
   display: inline-block; 
@@ -205,9 +226,19 @@ p {
 
 /* ======================= Page 6 ======================= */
 .section:nth-child(5) .poemText {
+  text-align: right;
   position: absolute;
   top: 5%;
   right: 5%;
+}
+
+.waxContainer {
+
+}
+
+.wax {
+  transform: scaleY(1.25) scaleX(1.2);
+  fill: #01417a;
 }
 
 .rocksContainer {
@@ -283,7 +314,8 @@ p {
   justify-content: center;
   text-align: center;
   background: rgb(215,234,255);
-  background: radial-gradient(circle, rgba(215,234,255,1) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%);
+  background: radial-gradient(circle, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%);
+  /* background: radial-gradient(circle, rgb(204, 190, 238) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%); */
 }
 #page6 {
   position: relative;
@@ -293,6 +325,7 @@ p {
   position: relative;
   display: flex;
   justify-content: center;
+  text-align: center;
   background: rgb(47, 45, 58);
   background: linear-gradient(
     180deg,

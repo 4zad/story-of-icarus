@@ -10,8 +10,15 @@ import SeaBottom from "../components/svgComponents/SeaBottom";
 import Trees from "../components/svgComponents/Trees";
 
 import icarusFlying from "../assets/svg/icarus-flying.svg";
+import farm from "../assets/svg/farm.svg";
+import grass1 from "../assets/svg/grass1.svg";
+import grass2 from "../assets/svg/grass2.svg";
+import barn from "../assets/png/barn.png";
 import moon from "../assets/png/moon.png";
 import wings from "../assets/svg/wings.svg";
+import meltingWax from "../assets/svg/melted-wax.svg";
+import meltingWax2 from "../assets/svg/melted-wax2.svg";
+import meltingWax4 from "../assets/svg/wax4.svg";
 import rock1 from "../assets/svg/rock1.svg";
 import rock2 from "../assets/svg/rock2.svg";
 import rock3 from "../assets/svg/rock3.svg";
@@ -302,7 +309,6 @@ function Night() {
         <section className="section" id="page3">
           <div className="page3Container">
             <img className="icarusFlying" src={icarusFlying} />
-            <img className="moon" src={moon} />
             <div className="poemText">
               <div className="poemText3-1">
                 <p>a farmer was ploughing</p>
@@ -317,6 +323,14 @@ function Night() {
                 <p>near</p>
               </div>
             </div>
+            <div className="farmContainer">
+              <img className="farm" src={farm} />
+            </div>
+            <div className="grass"></div>
+            {/* <div className="grassContainer">
+              {/* <img className="grass" src={grass2} />
+              
+            </div> */}
           </div>
         </section>
       </div>
@@ -352,7 +366,9 @@ function Night() {
           <p>off the coast</p>
           <p>there was</p>
         </div>
-
+        <div className="waxContainer">
+          <img className="wax" src={meltingWax4} />
+        </div>
         <div className="pg6BlockColour"></div>
 
         <div className="rocksContainer">
