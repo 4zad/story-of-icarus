@@ -32,6 +32,13 @@ function Night() {
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
 
+    const getRandomIntInclusive = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+
+      return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
+    }    
+
     // initial load in title-page animation
     loading_tl
       .fromTo(
@@ -375,6 +382,18 @@ function Night() {
           <p>a splash quite unnoticed</p>
           <p>this was</p>
           <p>Icarus drowning</p>
+        </div>
+
+        <div className="drowningBubbles">
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
         </div>
 
         <img className="icarusDrowning" src={icarusDrowning} />
