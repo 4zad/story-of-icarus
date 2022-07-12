@@ -37,7 +37,7 @@ function Night() {
       max = Math.floor(max);
 
       return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
-    }    
+    }
 
     // initial load in title-page animation
     loading_tl
@@ -206,6 +206,9 @@ function Night() {
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
+      defaults: {
+        ease: "expo.out"
+      },
       scrollTrigger: {
         trigger: "#page7",
         start: "top 30%",
@@ -222,7 +225,6 @@ function Night() {
         {
           autoAlpha: 1,
           y: 200,
-          ease: "expo.out",
           duration: 2,
         }
       )
@@ -237,169 +239,203 @@ function Night() {
           overwrite: true,
         },
         ">-=0.25"
-      );
-
-    // poem text fade-in animation
-    sections.forEach((section) => {
-      let lines = section.querySelectorAll("p");
-      let section_tl = gsap.timeline();
-
-      section_tl.fromTo(
-        lines,
+      )
+      .fromTo(
+        ".bubble",
         {
-          opacity: 0,
+          autoAlpha: 0
         },
         {
-          opacity: 1,
-          stagger: 0.5,
-          duration: 0.75,
-          ease: "power2",
-        }
+          autoAlpha: 1,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "expo.in"
+        },
+        "<-=0.25"
+      )
+      .fromTo(
+        ".bubble:nth-child(1)",
+        {
+          
+        },
+        {
+          x: 10,
+          y: 5,
+          stagger: 0.1,
+          duration: 0.5
+        },
+        "<"
+      )
+      .fromTo(
+        ".bubble",
+        {
+          x: 10,
+          y: 5,
+          stagger: 0.1,
+          duration: 0.5
+        },
+        "<+=0.1"
       );
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 50%",
-        toggleActions: "play none none reverse",
-        animation: section_tl,
-      });
+      
+  // poem text fade-in animation
+  sections.forEach((section) => {
+    let lines = section.querySelectorAll("p");
+    let section_tl = gsap.timeline();
+
+    section_tl.fromTo(
+      lines,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        stagger: 0.5,
+        duration: 0.75,
+        ease: "power2",
+      }
+    );
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 50%",
+      toggleActions: "play none none reverse",
+      animation: section_tl,
     });
-  }, []);
+  });
+}, []);
 
-  return (
-    <div className="Night">
-      <section className="headerSection" id="page1">
-        <div className="poemTitleContainer">
-          <div className="titleText">
-            <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
-            <p ref={authorRef}>A Poem by William Carlos Williams</p>
-          </div>
+return (
+  <div className="Night">
+    <section className="headerSection" id="page1">
+      <div className="poemTitleContainer">
+        <div className="titleText">
+          <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
+          <p ref={authorRef}>A Poem by William Carlos Williams</p>
         </div>
-
-        <div
-          ref={treeRef}
-          className="treesBg titleParallax"
-          data-depth="0.1"
-        ></div>
-
-        <div className="seaContainer">
-          <div className="seaTopContainer titleParallax" data-depth="0.3">
-            <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
-          </div>
-
-          <div className="seaBottomContainer titleParallax" data-depth="0.40">
-            <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
-          </div>
-        </div>
-      </section>
-
-      <div className="pinContainer">
-        <section className="section" id="page2">
-          <div className="page2Container">
-            <div className="poemText">
-              <p>According to Brueghel</p>
-              <p>when Icarus fell</p>
-              <p>it was spring</p>
-            </div>
-            <div className="treesContainer">
-              <Trees />
-            </div>
-          </div>
-        </section>
-
-        <section className="section" id="page3">
-          <div className="page3Container">
-            <img className="icarusFlying" src={icarusFlying} />
-            <img className="moon" src={moon} />
-            <div className="poemText">
-              <div className="poemText3-1">
-                <p>a farmer was ploughing</p>
-                <p>his field</p>
-                <p>the whole pageantry</p>
-              </div>
-              <br />
-              <br />
-              <div className="poemText3-2">
-                <p>of the year was</p>
-                <p>awake tingling</p>
-                <p>near</p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
 
-      <section className="section" id="page4">
-        <div className="poemText">
-          <p>the edge of the sea</p>
-          <p>concerned</p>
-          <p>with itself</p>
-        </div>
-      </section>
+      <div
+        ref={treeRef}
+        className="treesBg titleParallax"
+        data-depth="0.1"
+      ></div>
 
-      <section className="section" id="page5">
-        <div className="poemText">
-          <p>sweating in the sun</p>
-          <p>that melted</p>
-          <p>the wings' wax</p>
+      <div className="seaContainer">
+        <div className="seaTopContainer titleParallax" data-depth="0.3">
+          <SeaTop color1={nightColours[1]} color2={nightColours[0]} />
         </div>
 
-        <div className="wingsContainer">
-          <img className="wings" src={wings} />
+        <div className="seaBottomContainer titleParallax" data-depth="0.40">
+          <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
         </div>
-        {feathers.map((feather) => (
-          <IconContext.Provider value={{ className: "feather" }}>
-            <GiFeather id={feather} />
-          </IconContext.Provider>
-        ))}
-      </section>
+      </div>
+    </section>
 
-      <section className="section" id="page6">
-        <div className="poemText">
-          <p>unsignificantly</p>
-          <p>off the coast</p>
-          <p>there was</p>
-        </div>
-
-        <div className="pg6BlockColour"></div>
-
-        <div className="rocksContainer">
-          <div className="rock3container">
-            <img className="rock rock3" data-depth="0.075" src={rock3} />
+    <div className="pinContainer">
+      <section className="section" id="page2">
+        <div className="page2Container">
+          <div className="poemText">
+            <p>According to Brueghel</p>
+            <p>when Icarus fell</p>
+            <p>it was spring</p>
           </div>
-
-          <div className="rock2container">
-            <img className="rock rock2" data-depth="0.30" src={rock2} />
-          </div>
-
-          <div className="rock1container">
-            <img className="rock rock1" data-depth="0.70" src={rock1} />
+          <div className="treesContainer">
+            <Trees />
           </div>
         </div>
       </section>
 
-      <section className="section" id="page7">
-        <div className="poemText">
-          <p>a splash quite unnoticed</p>
-          <p>this was</p>
-          <p>Icarus drowning</p>
+      <section className="section" id="page3">
+        <div className="page3Container">
+          <img className="icarusFlying" src={icarusFlying} />
+          <img className="moon" src={moon} />
+          <div className="poemText">
+            <div className="poemText3-1">
+              <p>a farmer was ploughing</p>
+              <p>his field</p>
+              <p>the whole pageantry</p>
+            </div>
+            <br />
+            <br />
+            <div className="poemText3-2">
+              <p>of the year was</p>
+              <p>awake tingling</p>
+              <p>near</p>
+            </div>
+          </div>
         </div>
-
-        <div className="drowningBubbles">
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-          <span class="bubble"></span>
-        </div>
-
-        <img className="icarusDrowning" src={icarusDrowning} />
       </section>
     </div>
-  );
+
+    <section className="section" id="page4">
+      <div className="poemText">
+        <p>the edge of the sea</p>
+        <p>concerned</p>
+        <p>with itself</p>
+      </div>
+    </section>
+
+    <section className="section" id="page5">
+      <div className="poemText">
+        <p>sweating in the sun</p>
+        <p>that melted</p>
+        <p>the wings' wax</p>
+      </div>
+
+      <div className="wingsContainer">
+        <img className="wings" src={wings} />
+      </div>
+      {feathers.map((feather) => (
+        <IconContext.Provider value={{ className: "feather" }}>
+          <GiFeather id={feather} />
+        </IconContext.Provider>
+      ))}
+    </section>
+
+    <section className="section" id="page6">
+      <div className="poemText">
+        <p>unsignificantly</p>
+        <p>off the coast</p>
+        <p>there was</p>
+      </div>
+
+      <div className="pg6BlockColour"></div>
+
+      <div className="rocksContainer">
+        <div className="rock3container">
+          <img className="rock rock3" data-depth="0.075" src={rock3} />
+        </div>
+
+        <div className="rock2container">
+          <img className="rock rock2" data-depth="0.30" src={rock2} />
+        </div>
+
+        <div className="rock1container">
+          <img className="rock rock1" data-depth="0.70" src={rock1} />
+        </div>
+      </div>
+    </section>
+
+    <section className="section" id="page7">
+      <div className="poemText">
+        <p>a splash quite unnoticed</p>
+        <p>this was</p>
+        <p>Icarus drowning</p>
+      </div>
+
+      <div className="drowningBubbles">
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+        <span class="bubble"></span>
+      </div>
+
+      <img className="icarusDrowning" src={icarusDrowning} />
+    </section>
+  </div>
+);
 }
 
 export default Night;

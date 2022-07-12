@@ -253,36 +253,42 @@ p {
 
 .section:nth-child(6) > .poemText {
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
 }
 
 .drowningBubbles {
   position: absolute;
-  top: 35%;
+  display: inline-block;
+  top: 42%;
+  left: 48%;
+  transform: translateX(-50%);
+  height: 200px;
+  width: 200px;
 }
 
 .bubble {
-  position: relative;
+  position: absolute;
   display: inline-block;
-  height: 250px;
-  width: 250px;
+  transform-origin: 50% 50%;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   background: radial-gradient(circle at 52% 60%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 1));
 }
 .bubble:before {
   content: "";
   z-index: 0;
-  display: block;
   position: absolute;
+  display: block;
   bottom: 15%;
   right: 10%;
   width: 50%;
   height: 50%;
   border-radius: 100%;
-  filter: blur(10px);
-  -webkit-filter: blur(10px);
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
   transform: rotate(140deg);
   -webkit-transform: rotate(140deg);
   background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%);
@@ -294,14 +300,36 @@ p {
   position: absolute;
   top: 10%;
   left: 5%;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   border-radius: 100%;
   filter: blur(10px);
   -webkit-filter: blur(10px);
   transform: rotate(-20deg);
   -webkit-transform: rotate(-20deg);
   background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bubble:nth-child(1) {
+  transform: scale(0.08);
+}
+.bubble:nth-child(2) {
+  transform: scale(0.1);
+}
+.bubble:nth-child(3) {
+  transform: scale(0.12);
+}
+.bubble:nth-child(4) {
+  transform: scale(0.14);
+}
+.bubble:nth-child(5) {
+  transform: scale(0.16);
+}
+.bubble:nth-child(6) {
+  transform: scale(0.18);
+}
+.bubble:nth-child(7) {
+  transform: scale(0.2);
 }
 
 .icarusDrowning {
