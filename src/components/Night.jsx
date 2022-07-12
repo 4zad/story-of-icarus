@@ -2,11 +2,15 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { IconContext } from "react-icons";
+import { GiFeather } from "react-icons/gi";
 
 import SeaTop from "../components/svgComponents/SeaTop";
 import SeaBottom from "../components/svgComponents/SeaBottom";
 import Trees from "../components/svgComponents/Trees";
 
+import icarusFlying from "../assets/svg/icarus-flying.svg";
+import moon from "../assets/png/moon.png";
 import wings from "../assets/svg/wings.svg";
 import rock1 from "../assets/svg/rock1.svg";
 import rock2 from "../assets/svg/rock2.svg";
@@ -22,6 +26,7 @@ function Night() {
   const titleTextRef = useRef(null);
   const authorRef = useRef(null);
   const treeRef = useRef(null);
+  const feathers = ["feather1", "feather2", "feather3", "feather4", "feather5"];
 
   useEffect(() => {
     const loading_tl = gsap.timeline();
@@ -215,8 +220,6 @@ function Night() {
             <SeaBottom color1={nightColours[1]} color2={nightColours[0]} />
           </div>
         </div>
-
-        <div className="titlePageBlockColour"></div>
       </section>
 
       <div className="pinContainer">
@@ -235,6 +238,8 @@ function Night() {
 
         <section className="section" id="page3">
           <div className="page3Container">
+            <img className="icarusFlying" src={icarusFlying} />
+            <img className="moon" src={moon} />
             <div className="poemText">
               <div className="poemText3-1">
                 <p>a farmer was ploughing</p>
@@ -270,6 +275,11 @@ function Night() {
 
         <div className="wingsContainer">
           <img className="wings" src={wings} />
+        </div>
+        <div className="feathers">
+          {feathers.map((feather) => (
+            <GiFeather className={feather} id="feather" />
+          ))}
         </div>
       </section>
 

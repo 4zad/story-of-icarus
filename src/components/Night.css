@@ -19,11 +19,14 @@ p {
 }
 
 .poemText {
-  padding: 1rem 3rem;
+  display: inline-block;
+  padding: 3rem;
+  width: fit-content;
 }
 
 .section,
 .headerSection {
+  position: relative;
   width: 100vw;
   height: 100vh;
 }
@@ -77,13 +80,13 @@ p {
   bottom: 0;
 }
 
-.titlePageBlockColour {
+.seaContainer::after {
+  content: "";
+  display: block;
   z-index: 0;
-  position: absolute;
   background: #01417a;
   width: 100%;
-  height: 10vh;
-  bottom: 0;
+  height: 15vw;
 }
 
 .treesBg {
@@ -98,19 +101,38 @@ p {
 .page2Container {
   position: relative;
 }
+.section:nth-child(1) .poemText {
+  position: absolute;
+  top: 0;
+  right: 15%;
+}
+
+.treesContainer {
+  position: absolute;
+  top: 15%;
+}
 
 /* ======================= Page 3 ======================= */
 .page3Container {
   position: relative;
 }
 
+.icarusFlying {
+  display: inline-block; 
+  position: absolute;
+  transform: scale(0.2);
+  top: 0;
+  left: 0;
+}
+
 /* ======================= Page 4 ======================= */
 
 /* ======================= Page 5 ======================= */
 
-.section:nth-child(5) > .poemText {
+.section:nth-child(4) .poemText{
   position: absolute;
   top: 15%;
+  margin: 0 auto;
 }
 
 .wingsContainer {
@@ -127,6 +149,11 @@ p {
   width: 80%;
   /* transform: scale(0.8); */
 }
+
+#feather {
+  transform: scale(3);
+}
+
 /* ======================= Page 6 ======================= */
 .rocksContainer {
   z-index: 0;
@@ -160,9 +187,11 @@ p {
 
 /* ======================= Page 7 ======================= */
 
-.section:nth-child(7) > .poemText {
+.section:nth-child(6) > .poemText {
+  text-align: center;
   position: absolute;
   top: 0;
+  height: auto;
 }
 
 .icarusDrowning {
@@ -172,31 +201,31 @@ p {
 }
 
 /* DELETE BELOW LATER */
-#page2 {
+.section#page2 {
+ position: absolute;
   z-index: 5;
-  position: absolute;
   top: 100%;
   left: 0;
   background-color: #01417a;
 }
-#page3 {
-  z-index: 0;
+.section#page3 {
   position: absolute;
+  z-index: 0;
   top: 100%;
   left: 0;
-  border: 3px red solid;
   background-color: darkturquoise;
 }
+
 #page4 {
   position: relative;
   background-color: rgb(175, 76, 175);
 }
 #page5 {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
   background-color: palevioletred;
 }
 #page6 {
@@ -204,10 +233,9 @@ p {
   background-color: darkseagreen;
 }
 #page7 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  display: flex;
+  justify-content: center;
   background: rgb(47, 45, 58);
   background: linear-gradient(
     180deg,
