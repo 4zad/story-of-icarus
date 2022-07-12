@@ -150,8 +150,38 @@ p {
   /* transform: scale(0.8); */
 }
 
-#feather {
-  transform: scale(3);
+.feather {
+  position: absolute;
+}
+
+#feather1 {
+  transform: scale(5) rotate(90deg);
+  top: 35%;
+  left: 8%;
+}
+
+#feather2 {
+  transform: scale(4) rotate(45deg);
+  top: 85%;
+  left: 15%;
+}
+
+#feather3 {
+  transform: scale(5.5) rotate(-100deg);
+  top: 55%;
+  left: 50%;
+}
+
+#feather4 {
+  transform: scale(5) rotate(-70deg);
+  top: 80%;
+  right: 15%;
+}
+
+#feather5 {
+  transform: scale(4) rotate(180deg);
+  top: 30%;
+  right: 10%;
 }
 
 /* ======================= Page 6 ======================= */
@@ -198,6 +228,7 @@ p {
   transform: scale(1.5) rotate(-90deg);
   position: absolute;
   top: 35%;
+  filter: invert() opacity(50%);
 }
 
 /* DELETE BELOW LATER */

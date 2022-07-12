@@ -105,14 +105,78 @@ function Night() {
     // Page 5 - wing animation
     const wings_tl = gsap
       .timeline({ defaults: { overwrite: true } })
-      .to(".wings", {
-        scaleX: 1.2,
-        // transformOrigin: "center center",
-        translateY: 20,
-        duration: 1,
-        yoyo: true,
-        repeat: -1,
-      });
+      .to(
+        "#feather1",
+        {
+          y: 30,
+          x: 20,
+          skewY: 8,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      )
+      .to(
+        "#feather2",
+        {
+          y: -30,
+          skewX: 10,
+          x: 20,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      )
+      .to(
+        "#feather3",
+        {
+          y: 20,
+          x: -20,
+          skewX: -10,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      )
+      .to(
+        "#feather4",
+        {
+          y: -20,
+          x: -20,
+          skewX: -8,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      )
+      .to(
+        "#feather5",
+        {
+          y: 20,
+          x: -20,
+          skewY: 10,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      )
+      .to(
+        ".wings",
+        {
+          scaleX: 1.2,
+          // transformOrigin: "center center",
+          translateY: 20,
+          duration: 1,
+          yoyo: true,
+          repeat: -1,
+        },
+        0
+      );
 
     // Page 6 - rock parallax
     const rock_para_tl = gsap.timeline({
@@ -121,7 +185,6 @@ function Night() {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        // markers: true,
       },
     });
     gsap.utils.toArray(".rock").forEach((rockLayer) => {
@@ -276,11 +339,11 @@ function Night() {
         <div className="wingsContainer">
           <img className="wings" src={wings} />
         </div>
-        <div className="feathers">
-          {feathers.map((feather) => (
-            <GiFeather className={feather} id="feather" />
-          ))}
-        </div>
+        {feathers.map((feather) => (
+          <IconContext.Provider value={{ className: "feather" }}>
+            <GiFeather id={feather} />
+          </IconContext.Provider>
+        ))}
       </section>
 
       <section className="section" id="page6">
