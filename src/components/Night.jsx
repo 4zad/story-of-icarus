@@ -366,9 +366,9 @@ function Night() {
           <p>off the coast</p>
           <p>there was</p>
         </div>
-        <div className="waxContainer">
+        {/* <div className="waxContainer">
           <img className="wax" src={meltingWax4} />
-        </div>
+        </div> */}
         <div className="pg6BlockColour"></div>
 
         <div className="rocksContainer">
