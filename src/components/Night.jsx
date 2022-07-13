@@ -2,14 +2,17 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { IconContext } from "react-icons";
 import { GiFeather } from "react-icons/gi";
+import { GiMoon } from "react-icons/gi";
 
 import SeaTop from "../components/svgComponents/SeaTop";
 import SeaBottom from "../components/svgComponents/SeaBottom";
 import Trees from "../components/svgComponents/Trees";
 
 import icarusFlying from "../assets/svg/icarus-flying.svg";
+import flightPath from "../assets/svg/flight-path.svg";
 import farm from "../assets/svg/farm.svg";
 import grass1 from "../assets/svg/grass1.svg";
 import grass2 from "../assets/svg/grass2.svg";
@@ -25,6 +28,7 @@ import icarusDrowning from "../assets/png/icarus-drowning.png";
 import "./Night.css";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin);
 
 function Night() {
   const nightColours = ["#0F90E6", "#01417A", "#503F90", "#3F3684", "#2F2D3A"];
@@ -36,6 +40,8 @@ function Night() {
   useEffect(() => {
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
+
+    // ===================== Title page animations ===================== 
 
     // initial load in title-page animation
     loading_tl
@@ -86,10 +92,55 @@ function Night() {
       title_para_tl.to(titleLayer, { y: movement, ease: "none" }, 0);
     });
 
-    // Page 2 - Walking away zoom out animation
-    
+    // ===================== Page 2 animations ===================== 
+    // Walking away zoom out animation
+    const forestZoom_tl = gsap.timeline({
+      defaults: { 
+      },
+      // scrollTrigger: {
+      //   trigger: ".headerSection",
+      //   start: "top top",
+      //   end: "bottom top",
+      //   scrub: true,
+      //   markers: true,
+      // },
+    });
+    forestZoom_tl
+      .to(".treesContainer",
+      {
+        keyframes: {
+          "0%": {scale: 1.00},
+          "6%": {y: 0, scale: 1.00, ease: "power1.in"},
+          "10%": {y: 20, scale: 1.03, ease: "power1.out"},
+          "16%": {y: 0, scale: 1.05, ease: "power1.in"},
+          "20%": {y: 20, scale: 1.08, ease: "power1.out"},
+          "26%": {y: 0, scale: 1.10, ease: "power1.in"},
+          "30%": {y: 20, scale: 1.13, ease: "power1.out"},
+          "36%": {y: 0, scale: 1.15, ease: "power1.in"},
+          "40%": {y: 20, scale: 1.18, ease: "power1.out"},
+          "46%": {y: 0, scale: 1.21, ease: "power1.in"},
+          "50%": {y: 20, scale: 1.25, ease: "power1.out"},
+          "56%": {y: 0, scale: 1.28, ease: "power1.in"},
+          "60%": {y: 20, scale: 1.32, ease: "power1.out"},
+          "66%": {y: 0, scale: 1.35, ease: "power1.in"},
+          "70%": {y: 20, scale: 1.38, ease: "power1.out"},
+          "76%": {y: 0, scale: 1.40, ease: "power1.in"},
+          "80%": {y: 20, scale: 1.43, ease: "power1.out"},
+          "86%": {y: 0, scale: 1.45, ease: "power1.in"},
+          "90%": {y: 20, scale: 1.48, ease: "power1.out"},
+          "96%": {y: 0, scale: 1.50, ease: "power1.in"},
+          "100%": {y: 0, scale: 1.50, ease: "linear"},
+          ease: "sine.out" // applied to entire path
+        },
+        transformOrigin: "0% 0%",
+        duration: 15,
+        reversed: false,
+        repeat: -1,
+      });
 
-    // Page 3 - pinning animation
+    // ===================== Page 3 animations =====================
+
+    // pinning animation
     const pin_tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".pinContainer",
@@ -110,7 +161,29 @@ function Night() {
         ease: "none",
       });
 
-    // Page 5 - wing animation
+    // motion path animation
+    const flight_path_tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page3",
+        start: "top top",
+        // pin: true,
+        // scrub: true
+      },
+    });
+    flight_path_tl.to(".icarusFlying", {
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        alignOrigin: [0.5, 0.5],
+        autoRotate: true
+      },
+      duration: 5,
+      ease: "power1.inOut"
+    })
+
+    //  ===================== Page 5 animations =====================
+    
+    // wings animation + feathers
     const wings_tl = gsap
       .timeline({ defaults: { overwrite: true } })
       .to(
@@ -265,6 +338,7 @@ function Night() {
         animation: section_tl,
       });
     });
+    
   }, []);
 
   return (
@@ -310,6 +384,17 @@ function Night() {
 
         <section className="section" id="page3">
           <div className="page3Container">
+            <div className="moonContainer">
+            <IconContext.Provider value={{ className: "moon" }}>
+              <GiMoon />
+            </IconContext.Provider>
+            </div>
+            <div className="flightPathContainer">
+            {/* <svg width="190" height="160" xmlns="http://www.w3.org/2000/svg">
+  <path id="path" d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
+</svg> */}
+            </div>
+            <img className="flightPath" src={flightPath}/>
             <img className="icarusFlying" src={icarusFlying} />
             <div className="poemText">
               <div className="poemText3-1">
