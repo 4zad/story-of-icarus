@@ -116,6 +116,7 @@ p {
   text-align: right;
   top: 0;
   right: 15%;
+  transform: translate(0, 50%);
 }
 
 .treesContainer {
@@ -123,8 +124,6 @@ p {
   position: absolute;
   top: 0;
   left: 0%;
-  transform-origin: 0% 0%;
-  transform: scale(2);
 }
 
 /* ======================= Page 3 ======================= */
@@ -145,14 +144,14 @@ p {
   right: 17%;
 }
 
-.flightPath {
+.flightPathContainer {
   position: absolute;
   width: 100vw;
   top: 100%;
 }
 
 #path {
-  transform: scaleX(100);
+  z-index: -1;
 }
 
 .moonContainer {
@@ -193,16 +192,16 @@ p {
   display: inline-block;
   position: absolute;
   top: 100%;
-  right: 40%;
-  transform: translate(50%, -50%) scale(0.1) rotateY(180deg) scaleX(-1);
+  left: -40%;
+  transform:  scale(0.1) rotateY(180deg) scaleX(-1);
 }
 
 /* ======================= Page 4 ======================= */
 .radialGradient .section:nth-child(1) .poemText {
   text-align: left;
   position: absolute;
-  top: 15%;
-  left: 15%;
+  top: -10%;
+  left: 10%;
   z-index: 1;
 }
 

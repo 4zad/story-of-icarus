@@ -12,12 +12,9 @@ import SeaBottom from "../components/svgComponents/SeaBottom";
 import Trees from "../components/svgComponents/Trees";
 
 import icarusFlying from "../assets/svg/icarus-flying.svg";
-import flightPath from "../assets/svg/flight-path.svg";
 import farm from "../assets/svg/farm.svg";
 import grass1 from "../assets/svg/grass1.svg";
 import grass2 from "../assets/svg/grass2.svg";
-import barn from "../assets/png/barn.png";
-import moon from "../assets/png/moon.png";
 import wings from "../assets/svg/wings.svg";
 import wax from "../assets/svg/wax.svg";
 import rock1 from "../assets/svg/rock1.svg";
@@ -95,48 +92,46 @@ function Night() {
     // ===================== Page 2 animations ===================== 
     // Walking away zoom out animation
     const forestZoom_tl = gsap.timeline({
-      defaults: { 
+      defaults: {
       },
-      // scrollTrigger: {
-      //   trigger: ".headerSection",
-      //   start: "top top",
-      //   end: "bottom top",
-      //   scrub: true,
-      //   markers: true,
-      // },
+      scrollTrigger: {
+        trigger: ".section#page2",
+        start: "0% 80%",
+        end: "100% 20%",
+        scrub: true,
+        markers: true,
+      },
     });
     forestZoom_tl
       .to(".treesContainer",
-      {
-        keyframes: {
-          "0%": {scale: 1.00},
-          "6%": {y: 0, scale: 1.00, ease: "power1.in"},
-          "10%": {y: 20, scale: 1.03, ease: "power1.out"},
-          "16%": {y: 0, scale: 1.05, ease: "power1.in"},
-          "20%": {y: 20, scale: 1.08, ease: "power1.out"},
-          "26%": {y: 0, scale: 1.10, ease: "power1.in"},
-          "30%": {y: 20, scale: 1.13, ease: "power1.out"},
-          "36%": {y: 0, scale: 1.15, ease: "power1.in"},
-          "40%": {y: 20, scale: 1.18, ease: "power1.out"},
-          "46%": {y: 0, scale: 1.21, ease: "power1.in"},
-          "50%": {y: 20, scale: 1.25, ease: "power1.out"},
-          "56%": {y: 0, scale: 1.28, ease: "power1.in"},
-          "60%": {y: 20, scale: 1.32, ease: "power1.out"},
-          "66%": {y: 0, scale: 1.35, ease: "power1.in"},
-          "70%": {y: 20, scale: 1.38, ease: "power1.out"},
-          "76%": {y: 0, scale: 1.40, ease: "power1.in"},
-          "80%": {y: 20, scale: 1.43, ease: "power1.out"},
-          "86%": {y: 0, scale: 1.45, ease: "power1.in"},
-          "90%": {y: 20, scale: 1.48, ease: "power1.out"},
-          "96%": {y: 0, scale: 1.50, ease: "power1.in"},
-          "100%": {y: 0, scale: 1.50, ease: "linear"},
-          ease: "sine.out" // applied to entire path
-        },
-        transformOrigin: "0% 0%",
-        duration: 15,
-        reversed: false,
-        repeat: -1,
-      });
+        {
+          keyframes: {
+            "0%": { scale: 1.00 },
+            "6%": { y: 0, scale: 1.00, ease: "power1.in" },
+            "10%": { y: 20, scale: 1.03, ease: "power1.out" },
+            "16%": { y: 0, scale: 1.05, ease: "power1.in" },
+            "20%": { y: 20, scale: 1.08, ease: "power1.out" },
+            "26%": { y: 0, scale: 1.10, ease: "power1.in" },
+            "30%": { y: 20, scale: 1.13, ease: "power1.out" },
+            "36%": { y: 0, scale: 1.15, ease: "power1.in" },
+            "40%": { y: 20, scale: 1.18, ease: "power1.out" },
+            "46%": { y: 0, scale: 1.21, ease: "power1.in" },
+            "50%": { y: 20, scale: 1.25, ease: "power1.out" },
+            "56%": { y: 0, scale: 1.28, ease: "power1.in" },
+            "60%": { y: 20, scale: 1.32, ease: "power1.out" },
+            "66%": { y: 0, scale: 1.35, ease: "power1.in" },
+            "70%": { y: 20, scale: 1.38, ease: "power1.out" },
+            "76%": { y: 0, scale: 1.40, ease: "power1.in" },
+            "80%": { y: 20, scale: 1.43, ease: "power1.out" },
+            "86%": { y: 0, scale: 1.45, ease: "power1.in" },
+            "90%": { y: 20, scale: 1.48, ease: "power1.out" },
+            "96%": { y: 0, scale: 1.50, ease: "power1.in" },
+            "100%": { y: 0, scale: 1.50, ease: "linear" },
+            ease: "linear" // applied to entire path
+          },
+          transformOrigin: "0% 0%",
+          reversed: false,
+        });
 
     // ===================== Page 3 animations =====================
 
@@ -146,9 +141,8 @@ function Night() {
         trigger: ".pinContainer",
         start: "top top",
         scrub: true,
-        markers: true,
         pin: true,
-        end: "+=200%",
+        end: "+=300%",
       },
     });
     pin_tl
@@ -164,25 +158,25 @@ function Night() {
     // motion path animation
     const flight_path_tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#page3",
-        start: "top top",
-        // pin: true,
-        // scrub: true
+        trigger: "#page2",
+        start: "bottom top",
+        end: "+=100%",
+        scrub: 2,
       },
     });
-    flight_path_tl.to(".icarusFlying", {
+    flight_path_tl.fromTo(".icarusFlying", {autoAlpha: 0}, {autoAlpha: 1}, 0)
+    .to(".icarusFlying", {
       motionPath: {
         path: "#path",
         align: "#path",
         alignOrigin: [0.5, 0.5],
         autoRotate: true
       },
-      duration: 5,
       ease: "power1.inOut"
-    })
+    }, 0)
 
     //  ===================== Page 5 animations =====================
-    
+
     // wings animation + feathers
     const wings_tl = gsap
       .timeline({ defaults: { overwrite: true } })
@@ -266,7 +260,6 @@ function Night() {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        markers: true
       },
     });
     gsap.utils.toArray(".rock").forEach((rockLayer) => {
@@ -276,8 +269,8 @@ function Night() {
     });
 
     // Increase height of block colour
-    // gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
-    // rock_para_tl.to(".pg6BlockColour", { scaleY: 3.5 }, 0);
+    gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
+    rock_para_tl.to(".pg6BlockColour", { scaleY: 3}, 0);
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
@@ -338,7 +331,7 @@ function Night() {
         animation: section_tl,
       });
     });
-    
+
   }, []);
 
   return (
@@ -376,6 +369,7 @@ function Night() {
               <p>when Icarus fell</p>
               <p>it was spring</p>
             </div>
+
             <div className="treesContainer">
               <Trees />
             </div>
@@ -385,16 +379,17 @@ function Night() {
         <section className="section" id="page3">
           <div className="page3Container">
             <div className="moonContainer">
-            <IconContext.Provider value={{ className: "moon" }}>
-              <GiMoon />
-            </IconContext.Provider>
+              <IconContext.Provider value={{ className: "moon" }}>
+                <GiMoon />
+              </IconContext.Provider>
             </div>
+
             <div className="flightPathContainer">
-            {/* <svg width="190" height="160" xmlns="http://www.w3.org/2000/svg">
-  <path id="path" d="M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
-</svg> */}
+              <svg  viewBox="24.118 106.085 809.412 257.444" xmlns="http://www.w3.org/2000/svg">
+                <path id="path" d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529" stroke="transparent" fill="transparent" />
+              </svg>
             </div>
-            <img className="flightPath" src={flightPath}/>
+
             <img className="icarusFlying" src={icarusFlying} />
             <div className="poemText">
               <div className="poemText3-1">
