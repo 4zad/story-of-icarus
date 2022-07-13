@@ -307,19 +307,22 @@ p {
   position: relative;
   background-color: rgb(175, 76, 175);
 }
+
+.radialGradient {
+  background: radial-gradient(circle at 50% 33%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 66%);
+}
 #page5 {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgb(215,234,255);
-  background: radial-gradient(circle at 50% 50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%);
+  /* background: radial-gradient(circle at 50% 50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%); */
   /* background: radial-gradient(circle, rgb(204, 190, 238) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%); */
 }
 #page6 {
   position: relative;
-  background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%);
+  /* background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%); */
 }
 #page7 {
   position: relative;

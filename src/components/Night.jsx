@@ -343,48 +343,50 @@ function Night() {
         </div>
       </section>
 
-      <section className="section" id="page5">
-        <div className="poemText">
-          <p>sweating in the sun</p>
-          <p>that melted</p>
-          <p>the wings' wax</p>
-        </div>
+      <div className="radialGradient">
+        <section className="section" id="page5">
+          <div className="poemText">
+            <p>sweating in the sun</p>
+            <p>that melted</p>
+            <p>the wings' wax</p>
+          </div>
 
-        <div className="wingsContainer">
-          <img className="wings" src={wings} />
-        </div>
-        {feathers.map((feather) => (
-          <IconContext.Provider value={{ className: "feather" }}>
-            <GiFeather id={feather} />
-          </IconContext.Provider>
-        ))}
-      </section>
+          <div className="wingsContainer">
+            <img className="wings" src={wings} />
+          </div>
+          {feathers.map((feather) => (
+            <IconContext.Provider value={{ className: "feather" }}>
+              <GiFeather id={feather} />
+            </IconContext.Provider>
+          ))}
+        </section>
 
-      <section className="section" id="page6">
-        <div className="poemText">
-          <p>unsignificantly</p>
-          <p>off the coast</p>
-          <p>there was</p>
-        </div>
-        {/* <div className="waxContainer">
+        <section className="section" id="page6">
+          <div className="poemText">
+            <p>unsignificantly</p>
+            <p>off the coast</p>
+            <p>there was</p>
+          </div>
+          {/* <div className="waxContainer">
           <img className="wax" src={meltingWax4} />
         </div> */}
-        <div className="pg6BlockColour"></div>
+          <div className="pg6BlockColour"></div>
 
-        <div className="rocksContainer">
-          <div className="rock3container">
-            <img className="rock rock3" data-depth="0.075" src={rock3} />
-          </div>
+          <div className="rocksContainer">
+            <div className="rock3container">
+              <img className="rock rock3" data-depth="0.075" src={rock3} />
+            </div>
 
-          <div className="rock2container">
-            <img className="rock rock2" data-depth="0.30" src={rock2} />
-          </div>
+            <div className="rock2container">
+              <img className="rock rock2" data-depth="0.30" src={rock2} />
+            </div>
 
-          <div className="rock1container">
-            <img className="rock rock1" data-depth="0.70" src={rock1} />
+            <div className="rock1container">
+              <img className="rock rock1" data-depth="0.70" src={rock1} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <section className="section" id="page7">
         <div className="poemText">
