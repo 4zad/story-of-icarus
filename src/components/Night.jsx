@@ -34,11 +34,36 @@ function Night() {
   const treeRef = useRef(null);
   const feathers = ["feather1", "feather2", "feather3", "feather4", "feather5"];
 
+  function createStars() {
+    let scene = document.querySelector(".scene");
+    const stars = 500;
+    const starSize = {
+      min: 1,
+      max: 5,
+    };
+    let i = 0;
+    while (i < stars) {
+      let star = document.createElement("i");
+      let x = Math.random() * 100 + "vw";
+      let y = Math.random() * 100 + "vh";
+      let width = 1 + Math.random() * (starSize.max - starSize.min);
+      let height = 1 + Math.random() * (starSize.max - starSize.min);
+
+      star.style.left = x;
+      star.style.top = y;
+      star.style.width = width;
+      star.style.height = height;
+
+      scene.appendChild();
+    }
+  }
+
   useEffect(() => {
+    createStars();
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
 
-    // ===================== Title page animations ===================== 
+    // ===================== Title page animations =====================
 
     // initial load in title-page animation
     loading_tl
@@ -89,11 +114,10 @@ function Night() {
       title_para_tl.to(titleLayer, { y: movement, ease: "none" }, 0);
     });
 
-    // ===================== Page 2 animations ===================== 
+    // ===================== Page 2 animations =====================
     // Walking away zoom out animation
     const forestZoom_tl = gsap.timeline({
-      defaults: {
-      },
+      defaults: {},
       scrollTrigger: {
         trigger: ".section#page2",
         start: "0% 80%",
@@ -102,36 +126,34 @@ function Night() {
         markers: true,
       },
     });
-    forestZoom_tl
-      .to(".treesContainer",
-        {
-          keyframes: {
-            "0%": { scale: 1.00 },
-            "6%": { y: 0, scale: 1.00, ease: "power1.in" },
-            "10%": { y: 20, scale: 1.03, ease: "power1.out" },
-            "16%": { y: 0, scale: 1.05, ease: "power1.in" },
-            "20%": { y: 20, scale: 1.08, ease: "power1.out" },
-            "26%": { y: 0, scale: 1.10, ease: "power1.in" },
-            "30%": { y: 20, scale: 1.13, ease: "power1.out" },
-            "36%": { y: 0, scale: 1.15, ease: "power1.in" },
-            "40%": { y: 20, scale: 1.18, ease: "power1.out" },
-            "46%": { y: 0, scale: 1.21, ease: "power1.in" },
-            "50%": { y: 20, scale: 1.25, ease: "power1.out" },
-            "56%": { y: 0, scale: 1.28, ease: "power1.in" },
-            "60%": { y: 20, scale: 1.32, ease: "power1.out" },
-            "66%": { y: 0, scale: 1.35, ease: "power1.in" },
-            "70%": { y: 20, scale: 1.38, ease: "power1.out" },
-            "76%": { y: 0, scale: 1.40, ease: "power1.in" },
-            "80%": { y: 20, scale: 1.43, ease: "power1.out" },
-            "86%": { y: 0, scale: 1.45, ease: "power1.in" },
-            "90%": { y: 20, scale: 1.48, ease: "power1.out" },
-            "96%": { y: 0, scale: 1.50, ease: "power1.in" },
-            "100%": { y: 0, scale: 1.50, ease: "linear" },
-            ease: "linear" // applied to entire path
-          },
-          transformOrigin: "0% 0%",
-          reversed: false,
-        });
+    forestZoom_tl.to(".treesContainer", {
+      keyframes: {
+        "0%": { scale: 1.0 },
+        "6%": { y: 0, scale: 1.0, ease: "power1.in" },
+        "10%": { y: 20, scale: 1.03, ease: "power1.out" },
+        "16%": { y: 0, scale: 1.05, ease: "power1.in" },
+        "20%": { y: 20, scale: 1.08, ease: "power1.out" },
+        "26%": { y: 0, scale: 1.1, ease: "power1.in" },
+        "30%": { y: 20, scale: 1.13, ease: "power1.out" },
+        "36%": { y: 0, scale: 1.15, ease: "power1.in" },
+        "40%": { y: 20, scale: 1.18, ease: "power1.out" },
+        "46%": { y: 0, scale: 1.21, ease: "power1.in" },
+        "50%": { y: 20, scale: 1.25, ease: "power1.out" },
+        "56%": { y: 0, scale: 1.28, ease: "power1.in" },
+        "60%": { y: 20, scale: 1.32, ease: "power1.out" },
+        "66%": { y: 0, scale: 1.35, ease: "power1.in" },
+        "70%": { y: 20, scale: 1.38, ease: "power1.out" },
+        "76%": { y: 0, scale: 1.4, ease: "power1.in" },
+        "80%": { y: 20, scale: 1.43, ease: "power1.out" },
+        "86%": { y: 0, scale: 1.45, ease: "power1.in" },
+        "90%": { y: 20, scale: 1.48, ease: "power1.out" },
+        "96%": { y: 0, scale: 1.5, ease: "power1.in" },
+        "100%": { y: 0, scale: 1.5, ease: "linear" },
+        ease: "linear", // applied to entire path
+      },
+      transformOrigin: "0% 0%",
+      reversed: false,
+    });
 
     // ===================== Page 3 animations =====================
 
@@ -164,16 +186,21 @@ function Night() {
         scrub: 2,
       },
     });
-    flight_path_tl.fromTo(".icarusFlying", {autoAlpha: 0}, {autoAlpha: 1}, 0)
-    .to(".icarusFlying", {
-      motionPath: {
-        path: "#path",
-        align: "#path",
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true
-      },
-      ease: "power1.inOut"
-    }, 0)
+    flight_path_tl
+      .fromTo(".icarusFlying", { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
+      .to(
+        ".icarusFlying",
+        {
+          motionPath: {
+            path: "#path",
+            align: "#path",
+            alignOrigin: [0.5, 0.5],
+            autoRotate: true,
+          },
+          ease: "power1.inOut",
+        },
+        0
+      );
 
     //  ===================== Page 5 animations =====================
 
@@ -270,7 +297,7 @@ function Night() {
 
     // Increase height of block colour
     gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
-    rock_para_tl.to(".pg6BlockColour", { scaleY: 3}, 0);
+    rock_para_tl.to(".pg6BlockColour", { scaleY: 3 }, 0);
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
@@ -331,7 +358,6 @@ function Night() {
         animation: section_tl,
       });
     });
-
   }, []);
 
   return (
@@ -385,8 +411,16 @@ function Night() {
             </div>
 
             <div className="flightPathContainer">
-              <svg  viewBox="24.118 106.085 809.412 257.444" xmlns="http://www.w3.org/2000/svg">
-                <path id="path" d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529" stroke="transparent" fill="transparent" />
+              <svg
+                viewBox="24.118 106.085 809.412 257.444"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  id="path"
+                  d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529"
+                  stroke="transparent"
+                  fill="transparent"
+                />
               </svg>
             </div>
 
