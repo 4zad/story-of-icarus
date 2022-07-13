@@ -16,9 +16,7 @@ import grass2 from "../assets/svg/grass2.svg";
 import barn from "../assets/png/barn.png";
 import moon from "../assets/png/moon.png";
 import wings from "../assets/svg/wings.svg";
-import meltingWax from "../assets/svg/melted-wax.svg";
-import meltingWax2 from "../assets/svg/melted-wax2.svg";
-import meltingWax4 from "../assets/svg/wax4.svg";
+import wax from "../assets/svg/wax.svg";
 import rock1 from "../assets/svg/rock1.svg";
 import rock2 from "../assets/svg/rock2.svg";
 import rock3 from "../assets/svg/rock3.svg";
@@ -87,6 +85,9 @@ function Night() {
       const movement = -(titleLayer.offsetHeight * depth);
       title_para_tl.to(titleLayer, { y: movement, ease: "none" }, 0);
     });
+
+    // Page 2 - Walking away zoom out animation
+    
 
     // Page 3 - pinning animation
     const pin_tl = gsap.timeline({
@@ -192,6 +193,7 @@ function Night() {
         start: "top top",
         end: "bottom top",
         scrub: true,
+        markers: true
       },
     });
     gsap.utils.toArray(".rock").forEach((rockLayer) => {
@@ -201,8 +203,8 @@ function Night() {
     });
 
     // Increase height of block colour
-    gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
-    rock_para_tl.to(".pg6BlockColour", { scaleY: 3.5 }, 0);
+    // gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
+    // rock_para_tl.to(".pg6BlockColour", { scaleY: 3.5 }, 0);
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
@@ -335,15 +337,18 @@ function Night() {
         </section>
       </div>
 
-      <section className="section" id="page4">
-        <div className="poemText">
-          <p>the edge of the sea</p>
-          <p>concerned</p>
-          <p>with itself</p>
-        </div>
-      </section>
-
       <div className="radialGradient">
+        <section className="section" id="page4">
+          <div className="poemText">
+            <p>the edge of the sea</p>
+            <p>concerned</p>
+            <p>with itself</p>
+          </div>
+          <div className="waxContainer">
+            <img className="wax" src={wax} />
+          </div>
+        </section>
+
         <section className="section" id="page5">
           <div className="poemText">
             <p>sweating in the sun</p>

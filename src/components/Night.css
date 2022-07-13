@@ -29,6 +29,7 @@ p {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 /* ======================= Title page ======================= */
@@ -38,21 +39,19 @@ p {
   color: white;
 }
 
-.titleText > p:nth-child(1) {
+.titleText>p:nth-child(1) {
   font-size: 6rem;
 }
 
-.titleText > p {
+.titleText>p {
   font-size: 1.5rem;
 }
 
 .headerSection {
   position: relative;
-  background: linear-gradient(
-    180deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 100%);
 }
 
 .poemTitleContainer {
@@ -67,14 +66,14 @@ p {
   bottom: 0;
 }
 
-.seaContainer > .seaTopContainer {
+.seaContainer>.seaTopContainer {
   position: absolute;
   width: 100%;
   bottom: 10%;
   /* height: inherit; */
 }
 
-.seaContainer > .seaBottomContainer {
+.seaContainer>.seaBottomContainer {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -101,8 +100,10 @@ p {
 .page2Container {
   position: relative;
 }
+
 .section:nth-child(1) .poemText {
   position: absolute;
+  text-align: right;
   top: 0;
   right: 15%;
 }
@@ -122,27 +123,30 @@ p {
   top: 70%;
   left: 10%;
 }
+
 .section:nth-child(2) .poemText3-2 {
+  text-align: right;
   position: absolute;
-  top: 300%;
-  right: 5%;
+  top: 325%;
+  right: 17%;
 }
 
 .farmContainer {
   position: absolute;
-  top: 100%;
+  top: 110%;
   transform: translate(50%, 30%) scaleX(1.6);
 }
 
 .grassContainer {
   /* position: absolute; */
 }
+
 .grass {
   position: absolute;
   background-image: url("../assets/svg/grass2.svg");
   background-repeat: repeat-x;
   top: -0;
-   left: 0;
+  left: 0;
   height: 500px;
   margin: 96px 0 auto;
   transform: translate(50%, 30%);
@@ -150,7 +154,7 @@ p {
 
 
 .icarusFlying {
-  display: inline-block; 
+  display: inline-block;
   position: absolute;
   top: 100%;
   right: 40%;
@@ -158,16 +162,33 @@ p {
 }
 
 /* ======================= Page 4 ======================= */
-.section:nth-child(3) .poemText {
+.radialGradient .section:nth-child(1) .poemText {
+  text-align: left;
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: 15%;
+  z-index: 1;
+}
+
+.waxContainer {
+  z-index: 0;
+  width: 100%;
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+}
+
+.wax {
+  width: 100%;
+  /* transform-origin: 50% 100%; */
+  transform: scaleY(1.7) scaleX(1.1);
 }
 
 /* ======================= Page 5 ======================= */
 
-.section:nth-child(4) .poemText{
-  color: rgb(98, 80, 152);
+.radialGradient .section:nth-child(2) .poemText {
+  color: rgb(39, 28, 71);
+  text-align: center;
   position: absolute;
   top: 25%;
   left: 50%;
@@ -184,10 +205,10 @@ p {
   justify-content: center;
   top: 15%;
 }
+
 .wings {
   height: 75vh;
   width: 80%;
-  /* transform: scale(0.8); */
 }
 
 .feather {
@@ -225,21 +246,45 @@ p {
 }
 
 /* ======================= Page 6 ======================= */
-.section:nth-child(5) .poemText {
+/* .radialGradient .section:nth-child(3) .poemText {
   text-align: right;
   position: absolute;
   top: 5%;
-  right: 5%;
+  right: 15%;
+} */
+
+.radialGradient .section:nth-child(3) .poemText {
+  color: rgb(39, 28, 71);
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  position: relative;
 }
 
-.waxContainer {
-
+.radialGradient .section:nth-child(3) p:nth-child(1) {
+  position: absolute;
+  left: 15%;
+  transform-origin: "50% 50%";
 }
 
-.wax {
-  transform: scaleY(1.25) scaleX(1.2);
-  fill: #01417a;
+.radialGradient .section:nth-child(3) p:nth-child(2) {
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  transform-origin: "50% 50%";
 }
+
+.radialGradient .section:nth-child(3) p:nth-child(3) {
+  position: absolute;
+  top: 65%;
+  left: 75%;
+  transform-origin: "50% 50%";
+}
+
+
+.waxContainer {}
+
+
 
 .rocksContainer {
   z-index: 0;
@@ -273,7 +318,7 @@ p {
 
 /* ======================= Page 7 ======================= */
 
-.section:nth-child(6) > .poemText {
+.section:nth-child(3)>.poemText {
   position: absolute;
   top: 0;
   left: 50%;
@@ -289,28 +334,29 @@ p {
 
 /* DELETE BELOW LATER */
 .section#page2 {
- position: absolute;
+  position: absolute;
   z-index: 5;
   top: 100%;
   left: 0;
   background-color: #01417a;
 }
+
 .section#page3 {
   position: absolute;
   z-index: 0;
   top: 100%;
   left: 0;
-  background-color: darkturquoise;
+  background: radial-gradient(circle at 20% 20%, rgb(75, 75, 75, 1) 0%, rgb(25, 25, 25, 1) 40%);
 }
 
 #page4 {
   position: relative;
-  background-color: rgb(175, 76, 175);
 }
 
 .radialGradient {
-  background: radial-gradient(circle at 50% 33%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 66%);
+  background: radial-gradient(circle at 50% 57%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 50%);
 }
+
 #page5 {
   position: relative;
   display: flex;
@@ -320,19 +366,19 @@ p {
   /* background: radial-gradient(circle at 50% 50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%); */
   /* background: radial-gradient(circle, rgb(204, 190, 238) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%); */
 }
+
 #page6 {
   position: relative;
   /* background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%); */
 }
+
 #page7 {
   position: relative;
   display: flex;
   justify-content: center;
   text-align: center;
   background: rgb(47, 45, 58);
-  background: linear-gradient(
-    180deg,
-    rgba(47, 45, 58, 1) 0%,
-    rgb(16, 16, 16) 85%
-  );
+  background: linear-gradient(180deg,
+      rgba(47, 45, 58, 1) 0%,
+      rgb(16, 16, 16) 85%);
 }
