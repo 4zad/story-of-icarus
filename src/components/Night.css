@@ -64,14 +64,7 @@ p {
 }
 
 .star {
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  left: 100px;
-  top : 100px;
-  z-index: 5;
+  /* background-color: #0F90E6; */
 }
 
 .poemTitleContainer {

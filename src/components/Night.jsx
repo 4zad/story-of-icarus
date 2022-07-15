@@ -36,88 +36,96 @@ function Night() {
   const treeRef = useRef(null);
   const feathers = ["feather1", "feather2", "feather3", "feather4", "feather5"];
 
-//  function createStars() {
-//       let scene = document.querySelector(".starsScene");
-//       const stars = 500;
-//       const starSize = {
-//         min: 1,
-//         max: 3,
-//       };
-//       let i = 0;
-//       while (i < stars) {
-//         let star = document.createElement("div");
-//         let x = Math.random() * 100 + "vw";
-//         let y = Math.random() * 100 + "vh";
-//         let width = Math.random() * (starSize.max - starSize.min) + "px";
-//         let height = width;
+ function createStars() {
+    const colours = ["#FFFFFF", "#0F90E6", "#01417A"];
+    const min = 0;
+    const max = 2;
 
-//         star.style.left = x;
-//         star.style.top = y;
-//         star.style.width = width;
-//         star.style.height = height;
-//         star.style.zIndex = "1";
-//         star.style.backgroundColor = "white";
-//         star.style.borderRadius = "50%";
-//         star.style.position = "absolute";
-//         // star.style.display = "inline-block";
-//         let boxShadow = `0 0 ${height} white`;
-//         star.style.boxShadow = boxShadow;
+      let scene = document.querySelector(".starsScene");
+      const stars = 500;
+      const starSize = {
+        min: 1,
+        max: 3,
+      };
+      let i = 0;
+      while (i < stars) {
+        let star = document.createElement("div");
+        star.classList.add('star');
 
-//         scene.appendChild(star);
-//         console.log(boxShadow);
-//         console.log("star created")
-//         i++;
-//       }
-//     }
+        // randomize position + size
+        let x = Math.random() * 100 + "vw";
+        let y = Math.random() * 100 + "vh";
+        let width = Math.random() * (starSize.max - starSize.min);
+        let height = width;
 
-var Star = React.createClass({
-  render:function(){
-  const starSize = {
-    min: 1,
-    max: 3,
-  };
+        // randomize colour
+        let colour = colours[2];
 
-    let x = Math.random() * 100 + "vw";
-    let y = Math.random() * 100 + "vh";
-    let width = Math.random() * (starSize.max - starSize.min) + "px";
-    let height = width;
+        star.style.left = x;
+        star.style.top = y;
+        star.style.width = width + "px";
+        star.style.height = height + "px";
+        star.style.zIndex = "1";
+        star.style.backgroundColor = colour;
+        star.style.borderRadius = "50%";
+        star.style.position = "absolute";
+        let boxShadow = `0 0 ${width * 3}px white`;
+        star.style.boxShadow = boxShadow;
 
-    const starStyle = {
-      left: x,
-      top: y,
-      width: width,
-      height: width,
-      zIndex: "1",
-      backgroundColor: "white",
-      borderRadius: "50%",
-      position: "absolute",
-      boxShadow: `0 0 ${height} white`
+        scene.appendChild(star);
+        console.log(boxShadow);
+        console.log("star created")
+        i++;
+      }
     }
 
-  return (
-    <div style={starStyle}></div>
-  );
-  }
-});
+// var Star = React.createClass({
+//   render:function(){
+//   const starSize = {
+//     min: 1,
+//     max: 3,
+//   };
 
+//     let x = Math.random() * 100 + "vw";
+//     let y = Math.random() * 100 + "vh";
+//     let width = Math.random() * (starSize.max - starSize.min) + "px";
+//     let height = width;
 
+//     const starStyle = {
+//       left: x,
+//       top: y,
+//       width: width,
+//       height: width,
+//       zIndex: "1",
+//       backgroundColor: "white",
+//       borderRadius: "50%",
+//       position: "absolute",
+//       boxShadow: `0 0 ${height} white`
+//     }
 
-function createStars() {
-  let scene = document.querySelector(".starsScene");
-  let starsArray = [];
-  const stars = 500;
-  let i = 0;
-  // while (i < stars) {
-  //   starsArray.push(<Star key={i}/>);
-  //   i++;
-  // }
-  // ReactDOM.render(<div>{starsArray}</div>, scene);
-  ReactDOM.render(Star, scene);
-};
+//   return (
+//     <div style={starStyle}></div>
+//   );
+//   }
+// });
+
+// function createStars() {
+//   let scene = document.querySelector(".starsScene");
+//   let starsArray = [];
+//   const stars = 500;
+//   let i = 0;
+//   // while (i < stars) {
+//   //   starsArray.push(<Star key={i}/>);
+//   //   i++;
+//   // }
+//   // ReactDOM.render(<div>{starsArray}</div>, scene);
+//   ReactDOM.render(Star, scene);
+// };
 
   useEffect(() => {
    
     createStars();
+    // testCircle();
 
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
