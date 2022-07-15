@@ -97,6 +97,7 @@ function Night() {
 
     // ===================== Page 2 animations ===================== 
     // Walking away zoom out animation
+    const scaleMultiplier = 1.0;
     const forestZoom_tl = gsap.timeline({
       defaults: {
       },
@@ -108,31 +109,32 @@ function Night() {
         markers: true,
       },
     });
+
     forestZoom_tl
       .to(".treesContainer",
         {
           keyframes: {
             "0%": { scale: 1.00 },
-            "6%": { y: 0, scale: 1.00, ease: "power1.in" },
-            "10%": { y: 20, scale: 1.03, ease: "power1.out" },
-            "16%": { y: 0, scale: 1.05, ease: "power1.in" },
-            "20%": { y: 20, scale: 1.08, ease: "power1.out" },
-            "26%": { y: 0, scale: 1.10, ease: "power1.in" },
-            "30%": { y: 20, scale: 1.13, ease: "power1.out" },
-            "36%": { y: 0, scale: 1.15, ease: "power1.in" },
-            "40%": { y: 20, scale: 1.18, ease: "power1.out" },
-            "46%": { y: 0, scale: 1.21, ease: "power1.in" },
-            "50%": { y: 20, scale: 1.25, ease: "power1.out" },
-            "56%": { y: 0, scale: 1.28, ease: "power1.in" },
-            "60%": { y: 20, scale: 1.32, ease: "power1.out" },
-            "66%": { y: 0, scale: 1.35, ease: "power1.in" },
-            "70%": { y: 20, scale: 1.38, ease: "power1.out" },
-            "76%": { y: 0, scale: 1.40, ease: "power1.in" },
-            "80%": { y: 20, scale: 1.43, ease: "power1.out" },
-            "86%": { y: 0, scale: 1.45, ease: "power1.in" },
-            "90%": { y: 20, scale: 1.48, ease: "power1.out" },
-            "96%": { y: 0, scale: 1.50, ease: "power1.in" },
-            "100%": { y: 0, scale: 1.50, ease: "linear" },
+            "6%": { y: 0, scale: scaleMultiplier * 1.00, ease: "power1.in" },
+            "10%": { y: 20, scale: scaleMultiplier * 1.03, ease: "power1.out" },
+            "16%": { y: 0, scale: scaleMultiplier * 1.05, ease: "power1.in" },
+            "20%": { y: 20, scale: scaleMultiplier * 1.08, ease: "power1.out" },
+            "26%": { y: 0, scale: scaleMultiplier * 1.10, ease: "power1.in" },
+            "30%": { y: 20, scale: scaleMultiplier * 1.13, ease: "power1.out" },
+            "36%": { y: 0, scale: scaleMultiplier * 1.15, ease: "power1.in" },
+            "40%": { y: 20, scale: scaleMultiplier * 1.18, ease: "power1.out" },
+            "46%": { y: 0, scale: scaleMultiplier * 1.21, ease: "power1.in" },
+            "50%": { y: 20, scale: scaleMultiplier * 1.25, ease: "power1.out" },
+            "56%": { y: 0, scale: scaleMultiplier * 1.28, ease: "power1.in" },
+            "60%": { y: 20, scale: scaleMultiplier * 1.32, ease: "power1.out" },
+            "66%": { y: 0, scale: scaleMultiplier * 1.35, ease: "power1.in" },
+            "70%": { y: 20, scale: scaleMultiplier * 1.38, ease: "power1.out" },
+            "76%": { y: 0, scale: scaleMultiplier * 1.40, ease: "power1.in" },
+            "80%": { y: 20, scale: scaleMultiplier * 1.43, ease: "power1.out" },
+            "86%": { y: 0, scale: scaleMultiplier * 1.45, ease: "power1.in" },
+            "90%": { y: 20, scale: scaleMultiplier * 1.48, ease: "power1.out" },
+            "96%": { y: 0, scale: scaleMultiplier * 1.50, ease: "power1.in" },
+            "100%": { y: 0, scale: scaleMultiplier * 1.50, ease: "linear" },
             ease: "linear" // applied to entire path
           },
           transformOrigin: "0% 0%",
