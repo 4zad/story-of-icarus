@@ -1,5 +1,4 @@
 import React from "react";
-import * as ReactDOM from 'react-dom';
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,13 +35,21 @@ function Night() {
   const treeRef = useRef(null);
   const feathers = ["feather1", "feather2", "feather3", "feather4", "feather5"];
 
- function createStars() {
-    const colours = ["#FFFFFF", "#0F90E6", "#01417A"];
-    const min = 0;
-    const max = 2;
+  const getRandomIntInclusive = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
-      let scene = document.querySelector(".starsScene");
-      const stars = 500;
+    return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
+  }
+
+ function createStars() {
+
+   const colours = ["#FFFFFF", nightColours[0], nightColours[1]];
+   const colourMin = 0;
+   const colourMax = 2;
+   
+   let scene = document.querySelector(".starsScene");
+      const stars = 750;
       const starSize = {
         min: 1,
         max: 3,
@@ -50,7 +57,6 @@ function Night() {
       let i = 0;
       while (i < stars) {
         let star = document.createElement("div");
-        star.classList.add('star');
 
         // randomize position + size
         let x = Math.random() * 100 + "vw";
@@ -59,7 +65,10 @@ function Night() {
         let height = width;
 
         // randomize colour
-        let colour = colours[2];
+        let colour = colours[getRandomIntInclusive(colourMin, colourMax)];
+        if (colour === colours[colourMin]) {
+          star.classList.add('star');
+        }
 
         star.style.left = x;
         star.style.top = y;
@@ -67,6 +76,7 @@ function Night() {
         star.style.height = height + "px";
         star.style.zIndex = "1";
         star.style.backgroundColor = colour;
+        star.style.opacity = 1;
         star.style.borderRadius = "50%";
         star.style.position = "absolute";
         let boxShadow = `0 0 ${width * 3}px white`;
@@ -79,59 +89,17 @@ function Night() {
       }
     }
 
-// var Star = React.createClass({
-//   render:function(){
-//   const starSize = {
-//     min: 1,
-//     max: 3,
-//   };
-
-//     let x = Math.random() * 100 + "vw";
-//     let y = Math.random() * 100 + "vh";
-//     let width = Math.random() * (starSize.max - starSize.min) + "px";
-//     let height = width;
-
-//     const starStyle = {
-//       left: x,
-//       top: y,
-//       width: width,
-//       height: width,
-//       zIndex: "1",
-//       backgroundColor: "white",
-//       borderRadius: "50%",
-//       position: "absolute",
-//       boxShadow: `0 0 ${height} white`
-//     }
-
-//   return (
-//     <div style={starStyle}></div>
-//   );
-//   }
-// });
-
-// function createStars() {
-//   let scene = document.querySelector(".starsScene");
-//   let starsArray = [];
-//   const stars = 500;
-//   let i = 0;
-//   // while (i < stars) {
-//   //   starsArray.push(<Star key={i}/>);
-//   //   i++;
-//   // }
-//   // ReactDOM.render(<div>{starsArray}</div>, scene);
-//   ReactDOM.render(Star, scene);
-// };
-
   useEffect(() => {
    
     createStars();
-    // testCircle();
 
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
 
     // ===================== Title page animations =====================
 
+    gsap.to(".star",{opacity: 0, duration: 0.5, yoyo: true, repeat: -1, ease: 'linear', stagger: 0.01, overwrite: true});
+    
     // initial load in title-page animation
     loading_tl
       .fromTo(
@@ -430,15 +398,13 @@ function Night() {
   return (
     <div className="Night">
       <section className="headerSection" id="page1">
-        <div className="starsScene"></div>
-        {/* <div className="star"></div> */}
         <div className="poemTitleContainer">
           <div className="titleText">
             <p ref={titleTextRef}>Landscape with the Fall of Icarus</p>
             <p ref={authorRef}>A Poem by William Carlos Williams</p>
           </div>
         </div>
-
+        <div className="starsScene"></div>
         <div
           ref={treeRef}
           className="treesBg titleParallax"
@@ -512,10 +478,6 @@ function Night() {
               <img className="farm" src={farm} />
             </div>
             <div className="grass"></div>
-            {/* <div className="grassContainer">
-              {/* <img className="grass" src={grass2} />
-              
-            </div> */}
           </div>
         </section>
       </div>
@@ -555,9 +517,6 @@ function Night() {
             <p>off the coast</p>
             <p>there was</p>
           </div>
-          {/* <div className="waxContainer">
-          <img className="wax" src={meltingWax4} />
-        </div> */}
           <div className="pg6BlockColour"></div>
 
           <div className="rocksContainer">

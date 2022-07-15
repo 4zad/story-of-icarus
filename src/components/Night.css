@@ -37,6 +37,7 @@ p {
   text-align: center;
   padding: 4rem;
   color: white;
+  z-index: 2;
 }
 
 .titleText>p:nth-child(1) {
