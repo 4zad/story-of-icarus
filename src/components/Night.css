@@ -37,6 +37,7 @@ p {
   text-align: center;
   padding: 4rem;
   color: white;
+  z-index: 2;
 }
 
 .titleText>p:nth-child(1) {
@@ -52,6 +53,19 @@ p {
   background: linear-gradient(180deg,
       rgba(2, 0, 36, 1) 0%,
       rgba(9, 9, 121, 1) 100%);
+}
+
+.starsScene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.star {
+  /* background-color: #0F90E6; */
 }
 
 .poemTitleContainer {
@@ -93,7 +107,8 @@ p {
   background-repeat: repeat-x;
   height: 500px;
   margin: 96px 0 auto;
-  filter: invert() opacity(25%);
+  filter: invert() opacity(80%);
+  z-index: 2;
 }
 
 /* ======================= Page 2 =======================*/
