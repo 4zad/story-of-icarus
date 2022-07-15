@@ -115,7 +115,7 @@ p {
   position: absolute;
   text-align: right;
   top: 0;
-  right: 15%;
+  right: 10%;
   transform: translate(0, 50%);
 }
 
@@ -281,12 +281,6 @@ p {
 }
 
 /* ======================= Page 6 ======================= */
-/* .radialGradient .section:nth-child(3) .poemText {
-  text-align: right;
-  position: absolute;
-  top: 5%;
-  right: 15%;
-} */
 
 .radialGradient .section:nth-child(3) .poemText {
   color: rgb(39, 28, 71);
@@ -294,32 +288,32 @@ p {
   width: 100%;
   text-align: center;
   position: relative;
+  top: 35%;
 }
 
 .radialGradient .section:nth-child(3) p:nth-child(1) {
   position: absolute;
-  left: 15%;
   transform-origin: "50% 50%";
+  top: 0;
+  left: 15%;
+  transform: translate(-50%, -50%);
 }
 
 .radialGradient .section:nth-child(3) p:nth-child(2) {
   position: absolute;
-  top: 35%;
-  left: 45%;
   transform-origin: "50% 50%";
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .radialGradient .section:nth-child(3) p:nth-child(3) {
   position: absolute;
-  top: 65%;
-  left: 75%;
   transform-origin: "50% 50%";
+  top: 50%;
+  right: 15%;
+  transform: translate(50%, -50%);
 }
-
-
-.waxContainer {}
-
-
 
 .rocksContainer {
   z-index: 0;
@@ -352,12 +346,98 @@ p {
 }
 
 /* ======================= Page 7 ======================= */
+.section#page7 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: rgb(47, 45, 58);
+  background: linear-gradient(
+    180deg,
+    rgba(47, 45, 58, 1) 0%,
+    rgb(16, 16, 16) 85%
+  );
+}
 
 .section:nth-child(3)>.poemText {
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
+}
+
+.drowningBubbles {
+  position: absolute;
+  display: inline-block;
+  top: 48%;
+  left: 47%;
+  transform: translateX(-50%);
+  height: 200px;
+  width: 200px;
+}
+
+.bubble {
+  position: absolute;
+  display: inline-block;
+  transform-origin: 50% 50%;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 52% 60%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 1));
+  opacity: 0; /* for gsap animation */
+}
+.bubble:before {
+  content: "";
+  z-index: 0;
+  position: absolute;
+  display: block;
+  bottom: 15%;
+  right: 10%;
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  transform: rotate(140deg);
+  -webkit-transform: rotate(140deg);
+  background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%);
+}
+.bubble:after {
+  content: "";
+  z-index: 0;
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 95%;
+  height: 95%;
+  border-radius: 100%;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+  transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  background: radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bubble:nth-child(1) {
+  transform: scale(0.08);
+}
+.bubble:nth-child(2) {
+  transform: scale(0.1);
+}
+.bubble:nth-child(3) {
+  transform: scale(0.12);
+}
+.bubble:nth-child(4) {
+  transform: scale(0.14);
+}
+.bubble:nth-child(5) {
+  transform: scale(0.16);
+}
+.bubble:nth-child(6) {
+  transform: scale(0.18);
+}
+.bubble:nth-child(7) {
+  transform: scale(0.2);
 }
 
 .icarusDrowning {
@@ -399,15 +479,4 @@ p {
 #page6 {
   position: relative;
   /* background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%); */
-}
-
-#page7 {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  background: rgb(47, 45, 58);
-  background: linear-gradient(180deg,
-      rgba(47, 45, 58, 1) 0%,
-      rgb(16, 16, 16) 85%);
 }

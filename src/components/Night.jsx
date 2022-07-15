@@ -63,8 +63,14 @@ function Night() {
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
 
-    // ===================== Title page animations =====================
+    const getRandomIntInclusive = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
 
+      return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
+    }
+
+    // ===================== Title page animations ===================== 
     // initial load in title-page animation
     loading_tl
       .fromTo(
@@ -116,6 +122,7 @@ function Night() {
 
     // ===================== Page 2 animations =====================
     // Walking away zoom out animation
+    const scaleMultiplier = 1.0;
     const forestZoom_tl = gsap.timeline({
       defaults: {},
       scrollTrigger: {
@@ -126,37 +133,39 @@ function Night() {
         markers: true,
       },
     });
-    forestZoom_tl.to(".treesContainer", {
-      keyframes: {
-        "0%": { scale: 1.0 },
-        "6%": { y: 0, scale: 1.0, ease: "power1.in" },
-        "10%": { y: 20, scale: 1.03, ease: "power1.out" },
-        "16%": { y: 0, scale: 1.05, ease: "power1.in" },
-        "20%": { y: 20, scale: 1.08, ease: "power1.out" },
-        "26%": { y: 0, scale: 1.1, ease: "power1.in" },
-        "30%": { y: 20, scale: 1.13, ease: "power1.out" },
-        "36%": { y: 0, scale: 1.15, ease: "power1.in" },
-        "40%": { y: 20, scale: 1.18, ease: "power1.out" },
-        "46%": { y: 0, scale: 1.21, ease: "power1.in" },
-        "50%": { y: 20, scale: 1.25, ease: "power1.out" },
-        "56%": { y: 0, scale: 1.28, ease: "power1.in" },
-        "60%": { y: 20, scale: 1.32, ease: "power1.out" },
-        "66%": { y: 0, scale: 1.35, ease: "power1.in" },
-        "70%": { y: 20, scale: 1.38, ease: "power1.out" },
-        "76%": { y: 0, scale: 1.4, ease: "power1.in" },
-        "80%": { y: 20, scale: 1.43, ease: "power1.out" },
-        "86%": { y: 0, scale: 1.45, ease: "power1.in" },
-        "90%": { y: 20, scale: 1.48, ease: "power1.out" },
-        "96%": { y: 0, scale: 1.5, ease: "power1.in" },
-        "100%": { y: 0, scale: 1.5, ease: "linear" },
-        ease: "linear", // applied to entire path
-      },
-      transformOrigin: "0% 0%",
-      reversed: false,
-    });
+
+    forestZoom_tl
+      .to(".treesContainer",
+        {
+          keyframes: {
+            "0%": { scale: 1.00 },
+            "6%": { y: 0, scale: scaleMultiplier * 1.00, ease: "power1.in" },
+            "10%": { y: 20, scale: scaleMultiplier * 1.03, ease: "power1.out" },
+            "16%": { y: 0, scale: scaleMultiplier * 1.05, ease: "power1.in" },
+            "20%": { y: 20, scale: scaleMultiplier * 1.08, ease: "power1.out" },
+            "26%": { y: 0, scale: scaleMultiplier * 1.10, ease: "power1.in" },
+            "30%": { y: 20, scale: scaleMultiplier * 1.13, ease: "power1.out" },
+            "36%": { y: 0, scale: scaleMultiplier * 1.15, ease: "power1.in" },
+            "40%": { y: 20, scale: scaleMultiplier * 1.18, ease: "power1.out" },
+            "46%": { y: 0, scale: scaleMultiplier * 1.21, ease: "power1.in" },
+            "50%": { y: 20, scale: scaleMultiplier * 1.25, ease: "power1.out" },
+            "56%": { y: 0, scale: scaleMultiplier * 1.28, ease: "power1.in" },
+            "60%": { y: 20, scale: scaleMultiplier * 1.32, ease: "power1.out" },
+            "66%": { y: 0, scale: scaleMultiplier * 1.35, ease: "power1.in" },
+            "70%": { y: 20, scale: scaleMultiplier * 1.38, ease: "power1.out" },
+            "76%": { y: 0, scale: scaleMultiplier * 1.40, ease: "power1.in" },
+            "80%": { y: 20, scale: scaleMultiplier * 1.43, ease: "power1.out" },
+            "86%": { y: 0, scale: scaleMultiplier * 1.45, ease: "power1.in" },
+            "90%": { y: 20, scale: scaleMultiplier * 1.48, ease: "power1.out" },
+            "96%": { y: 0, scale: scaleMultiplier * 1.50, ease: "power1.in" },
+            "100%": { y: 0, scale: scaleMultiplier * 1.50, ease: "linear" },
+            ease: "linear" // applied to entire path
+          },
+          transformOrigin: "0% 0%",
+          reversed: false,
+        });
 
     // ===================== Page 3 animations =====================
-
     // pinning animation
     const pin_tl = gsap.timeline({
       scrollTrigger: {
@@ -186,24 +195,18 @@ function Night() {
         scrub: 2,
       },
     });
-    flight_path_tl
-      .fromTo(".icarusFlying", { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
-      .to(
-        ".icarusFlying",
-        {
-          motionPath: {
-            path: "#path",
-            align: "#path",
-            alignOrigin: [0.5, 0.5],
-            autoRotate: true,
-          },
-          ease: "power1.inOut",
+    flight_path_tl.fromTo(".icarusFlying", { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
+      .to(".icarusFlying", {
+        motionPath: {
+          path: "#path",
+          align: "#path",
+          alignOrigin: [0.5, 0.5],
+          autoRotate: true
         },
-        0
-      );
+        ease: "power1.inOut"
+      }, 0)
 
     //  ===================== Page 5 animations =====================
-
     // wings animation + feathers
     const wings_tl = gsap
       .timeline({ defaults: { overwrite: true } })
@@ -301,6 +304,9 @@ function Night() {
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
+      defaults: {
+        ease: "circ.out"
+      },
       scrollTrigger: {
         trigger: "#page7",
         start: "top 30%",
@@ -317,22 +323,184 @@ function Night() {
         {
           autoAlpha: 1,
           y: 200,
+          duration: 1.5,
           ease: "expo.out",
-          duration: 2,
         }
       )
       .to(
         ".icarusDrowning",
         {
-          y: 100,
-          duration: 3,
+          y: 150,
+          duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
           yoyo: true,
           overwrite: true,
         },
         ">-=0.25"
+      )
+      .to(
+        ".bubble:nth-child(7)",
+        {
+          x: 35,
+          y: -300,
+          opacity: 1,
+          duration: 0.5
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(7)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(6)",
+        {
+          x: -50,
+          y: -270,
+          opacity: 1,
+          duration: 0.53
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(6)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(5)",
+        {
+          x: 0,
+          y: -225,
+          opacity: 1,
+          duration: 0.56
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(5)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(4)",
+        {
+          x: 45,
+          y: -200,
+          opacity: 1,
+          duration: 0.6
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(4)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(3)",
+        {
+          x: -30,
+          y: -175,
+          opacity: 1,
+          duration: 0.675
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(3)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(2)",
+        {
+          x: 15,
+          y: -150,
+          opacity: 1,
+          duration: 0.75
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(2)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(1)",
+        {
+          x: -5,
+          y: -120,
+          opacity: 1,
+          duration: 0.9
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(1)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
       );
+    console.log(getRandomIntInclusive(-10, 10));
 
     // poem text fade-in animation
     sections.forEach((section) => {
@@ -395,7 +563,6 @@ function Night() {
               <p>when Icarus fell</p>
               <p>it was spring</p>
             </div>
-
             <div className="treesContainer">
               <Trees />
             </div>
@@ -411,16 +578,8 @@ function Night() {
             </div>
 
             <div className="flightPathContainer">
-              <svg
-                viewBox="24.118 106.085 809.412 257.444"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  id="path"
-                  d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529"
-                  stroke="transparent"
-                  fill="transparent"
-                />
+              <svg viewBox="24.118 106.085 809.412 257.444" xmlns="http://www.w3.org/2000/svg">
+                <path id="path" d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529" stroke="transparent" fill="transparent" />
               </svg>
             </div>
 
@@ -514,9 +673,19 @@ function Night() {
           <p>Icarus drowning</p>
         </div>
 
+        <div className="drowningBubbles">
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+          <span class="bubble"></span>
+        </div>
+
         <img className="icarusDrowning" src={icarusDrowning} />
       </section>
-    </div>
+    </div >
   );
 }
 
