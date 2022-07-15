@@ -207,7 +207,7 @@ function Night() {
     // Page 7 animation
     const drowning_tl = gsap.timeline({
       defaults: {
-        ease: "expo.out"
+        ease: "circ.out"
       },
       scrollTrigger: {
         trigger: "#page7",
@@ -225,14 +225,15 @@ function Night() {
         {
           autoAlpha: 1,
           y: 200,
-          duration: 2,
+          duration: 1.5,
+          ease: "expo.out",
         }
       )
       .to(
         ".icarusDrowning",
         {
-          y: 100,
-          duration: 3,
+          y: 150,
+          duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
           yoyo: true,
@@ -240,42 +241,168 @@ function Night() {
         },
         ">-=0.25"
       )
-      .fromTo(
-        ".bubble",
+      .to(
+        ".bubble:nth-child(7)",
         {
-          autoAlpha: 0
+          x: 35,
+          y: -300,
+          opacity: 1,
+          duration: 0.5
         },
-        {
-          autoAlpha: 1,
-          stagger: 0.1,
-          duration: 0.5,
-          ease: "expo.in"
-        },
-        "<-=0.25"
+        "<-=0.5"
       )
-      .fromTo(
+      .to(
+        ".bubble:nth-child(7)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(6)",
+        {
+          x: -50,
+          y: -270,
+          opacity: 1,
+          duration: 0.53
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(6)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(5)",
+        {
+          x: 0,
+          y: -225,
+          opacity: 1,
+          duration: 0.56
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(5)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(4)",
+        {
+          x: 45,
+          y: -200,
+          opacity: 1,
+          duration: 0.6
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(4)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(3)",
+        {
+          x: -30,
+          y: -175,
+          opacity: 1,
+          duration: 0.675
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(3)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
+        ".bubble:nth-child(2)",
+        {
+          x: 15,
+          y: -150,
+          opacity: 1,
+          duration: 0.75
+        },
+        "<-=0.5"
+      )
+      .to(
+        ".bubble:nth-child(2)",
+        {
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
+        },
+        ">+=0.05"
+      )
+      .to(
         ".bubble:nth-child(1)",
         {
-          
+          x: -5,
+          y: -120,
+          opacity: 1,
+          duration: 0.9
         },
-        {
-          x: 10,
-          y: 5,
-          stagger: 0.1,
-          duration: 0.5
-        },
-        "<"
+        "<-=0.5"
       )
-      .fromTo(
-        ".bubble",
+      .to(
+        ".bubble:nth-child(1)",
         {
-          x: 10,
-          y: 5,
-          stagger: 0.1,
-          duration: 0.5
+          rotate: getRandomIntInclusive(-45, 45),
+          x: `+=${getRandomIntInclusive(10, 15)}`,
+          y: `+=${getRandomIntInclusive(10, 15)}`,
+          duration: 3.0,
+          ease: "power1.inOut",
+          repeat: -1,
+          yoyo: true
         },
-        "<+=0.1"
+        ">+=0.05"
       );
+      console.log(getRandomIntInclusive(-10, 10));
       
   // poem text fade-in animation
   sections.forEach((section) => {
