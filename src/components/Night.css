@@ -51,6 +51,7 @@ p {
   color: white;
   z-index: 2;
   align-items: center;
+  transform: translateY(20%)
 }
 
 .titleText>p:nth-child(1) {
@@ -80,7 +81,7 @@ p {
 
 .poemTitleContainer {
   position: absolute;
-  width: 95vw;
+  width: 95%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -89,8 +90,9 @@ p {
   z-index: 1;
   position: absolute;
   width: 100%;
-  height: fit-content;
+  height: auto;
   bottom: 0;
+  transform-origin: 50% 100%;
 }
 
 .seaContainer>.seaTopContainer {
@@ -108,10 +110,12 @@ p {
 .seaContainer::after {
   content: "";
   display: block;
-  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
   background: #01417a;
   width: 100%;
-  height: 15vw;
+  height: 10vh;
 }
 
 .treesBg {
@@ -122,20 +126,17 @@ p {
   background-image: url("../assets/png/trees.png");
   background-repeat: repeat-x;
   width: 100vw;
-  height: 400px;
+  height: 300px;
   filter: invert() opacity(80%);
   z-index: 1;
 }
 
 @media (max-width: 1440px) {
   .titleText>p:nth-child(1) {
-    font-size: 5.5rem;
-  }
-  .seaContainer {
-    transform: scaleY(1);
+    font-size: 5rem;
   }
   /* .treesBg {
-    bottom: vw;
+    top: %;
   } */
 }
 
@@ -151,7 +152,10 @@ p {
     font-size: 1.4rem;
   }
   .seaContainer {
-    transform: scaleY(1.5);
+    transform: scaleY(1);
+  }
+  .treesBg {
+    top: 70%;
   }
 }
 
@@ -166,10 +170,10 @@ p {
     font-size: 1.3rem;
   }
   .seaContainer {
-    transform: scaleY(2.5) translateY(-30px);
+    transform: scaleY(1.5);
   }
   .treesBg {
-    bottom: 10vw;
+    top: 73%;
   }
 }
 
