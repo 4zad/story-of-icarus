@@ -13,8 +13,6 @@ import Trees from "../components/svgComponents/Trees";
 
 import icarusFlying from "../assets/svg/icarus-flying.svg";
 import farm from "../assets/svg/farm.svg";
-import grass1 from "../assets/svg/grass1.svg";
-import grass2 from "../assets/svg/grass2.svg";
 import wings from "../assets/svg/wings.svg";
 import wax from "../assets/svg/wax.svg";
 import rock1 from "../assets/svg/rock1.svg";
@@ -83,8 +81,6 @@ function Night() {
       star.style.boxShadow = boxShadow;
 
       scene.appendChild(star);
-      console.log(boxShadow);
-      console.log("star created");
       i++;
     }
   }
@@ -145,7 +141,6 @@ function Night() {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        markers: true,
       },
     });
 
@@ -165,7 +160,6 @@ function Night() {
         start: "0% 80%",
         end: "100% 20%",
         scrub: true,
-        markers: true,
       },
     });
 
@@ -337,8 +331,8 @@ function Night() {
     });
 
     // Increase height of block colour
-    gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
-    rock_para_tl.to(".pg6BlockColour", { scaleY: 3 }, 0);
+    // gsap.set(".pg6BlockColour", { transformOrigin: "bottom center" });
+    // rock_para_tl.to(".pg6BlockColour", { scaleY: 2.5 }, 0);
 
     // Page 7 animation
     const drowning_tl = gsap.timeline({
@@ -538,7 +532,6 @@ function Night() {
         },
         ">+=0.05"
       );
-    console.log(getRandomIntInclusive(-10, 10));
 
     // poem text fade-in animation
     sections.forEach((section) => {
@@ -577,11 +570,10 @@ function Night() {
         </div>
         <div className="starsScene"></div>
         <div
-          ref={treeRef}
           className="treesBg titleParallax"
           data-depth="0.1"
+          ref={treeRef}
         ></div>
-
         <div className="seaContainer">
           <div className="seaTopContainer titleParallax" data-depth="0.3">
             <SeaTop color1={nightColours[1]} color2={nightColours[0]} />

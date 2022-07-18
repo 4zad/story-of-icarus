@@ -32,16 +32,30 @@ p {
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  p {
+    font-size: 1.5rem;
+  }
+  .section .poemText {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  
+}
+
 /* ======================= Title page ======================= */
 .titleText {
   text-align: center;
   padding: 4rem;
   color: white;
   z-index: 2;
+  align-items: center;
 }
 
 .titleText>p:nth-child(1) {
   font-size: 6rem;
+  padding-bottom: 2rem;
 }
 
 .titleText>p {
@@ -64,12 +78,11 @@ p {
   z-index: 1;
 }
 
-.star {
-  /* background-color: #0F90E6; */
-}
-
 .poemTitleContainer {
-  position: relative;
+  position: absolute;
+  width: 95vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .seaContainer {
@@ -84,7 +97,6 @@ p {
   position: absolute;
   width: 100%;
   bottom: 10%;
-  /* height: inherit; */
 }
 
 .seaContainer>.seaBottomContainer {
@@ -103,13 +115,65 @@ p {
 }
 
 .treesBg {
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-image: url("../assets/png/trees.png");
   background-repeat: repeat-x;
-  height: 500px;
-  margin: 96px 0 auto;
+  width: 100vw;
+  height: 400px;
   filter: invert() opacity(80%);
-  z-index: 2;
+  z-index: 1;
 }
+
+@media (max-width: 1440px) {
+  .titleText>p:nth-child(1) {
+    font-size: 5.5rem;
+  }
+  .seaContainer {
+    transform: scaleY(1);
+  }
+  /* .treesBg {
+    bottom: vw;
+  } */
+}
+
+@media (max-width: 1024px) {
+  .titleText {
+    padding: 5%;
+    transform: translateY(60px);
+  }
+  .titleText>p:nth-child(1) {
+    font-size: 3.5rem;
+  }
+  .titleText>p {
+    font-size: 1.4rem;
+  }
+  .seaContainer {
+    transform: scaleY(1.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .titleText {
+    transform: translateY(100px);
+  }
+  .titleText>p:nth-child(1) {
+    font-size: 3rem;
+  }
+  .titleText>p {
+    font-size: 1.3rem;
+  }
+  .seaContainer {
+    transform: scaleY(2.5) translateY(-30px);
+  }
+  .treesBg {
+    bottom: 10vw;
+  }
+}
+
+
 
 /* ======================= Page 2 =======================*/
 .section#page2 {
@@ -138,10 +202,31 @@ p {
   z-index: 0;
   position: absolute;
   top: 0;
-  left: 0%;
+  left: 0;
+  width: 50vw;
+  height: auto;
 }
 
+@media (max-width: 768px) {
+  .section:nth-child(1) .poemText {
+    transform: translate(0, 500%);
+  }
+  .treesContainer {
+    width: 70vw;
+  }
+}
+
+
+
 /* ======================= Page 3 ======================= */
+.section#page3 {
+  position: absolute;
+  z-index: 0;
+  top: 100%;
+  left: 0;
+  background: radial-gradient(circle at 80% 20%, rgb(75, 75, 75, 1) 0%, rgb(25, 25, 25, 1) 40%);
+}
+
 .page3Container {
   position: relative;
 }
@@ -156,7 +241,7 @@ p {
   text-align: right;
   position: absolute;
   top: 325%;
-  right: 17%;
+  right: 10%;
 }
 
 .flightPathContainer {
@@ -187,22 +272,6 @@ p {
   transform: translate(50%, 30%) scaleX(1.6);
 }
 
-/* .grassContainer {
-  position: absolute;
-}
-
-.grass {
-  position: absolute;
-  background-image: url("../assets/svg/grass2.svg");
-  background-repeat: repeat-x;
-  top: -0;
-  left: 0;
-  height: 500px;
-  margin: 96px 0 auto;
-  transform: translate(50%, 30%);
-} */
-
-
 .icarusFlying {
   display: inline-block;
   position: absolute;
@@ -211,7 +280,54 @@ p {
   transform:  scale(0.1) rotateY(180deg) scaleX(-1);
 }
 
+@media (max-width: 1024px) {
+  .moon {
+    transform: translate(100%, 100%) scale(9);
+  }
+  .farmContainer {
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    transform: translate(-25%, 25%) scale(0.7) scaleX(1.6);
+  }
+  .icarusFlying {
+    transform:  scale(0.05) scaleX(1);
+  }
+  .section:nth-child(2) .poemText3-1 {
+    transform: translateY(50%);
+  }
+  .section:nth-child(2) .poemText3-2 {
+    transform: translateY(100%);
+  }
+}
+@media (max-width: 768px) {
+  .moon {
+    transform: translate(100%, 100%) scale(6);
+  }
+  .section:nth-child(2) .poemText3-2 {
+    transform: translateY(-15%);
+  }
+  .farmContainer {
+    position: absolute;
+    top: 100%;
+    left: 30%;
+  }
+  .page3Container {
+    transform: translateY(150%);
+  }
+}
+
+
+
 /* ======================= Page 4 ======================= */
+.radialGradient {
+  background: radial-gradient(circle at 50% 57%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 50%);
+}
+
+.section#page4 {
+  position: relative;
+}
+
 .radialGradient .section:nth-child(1) .poemText {
   text-align: left;
   position: absolute;
@@ -234,7 +350,31 @@ p {
   transform: scaleY(1.7) scaleX(1.1);
 }
 
+@media (max-width: 1024px) {
+  .radialGradient .section:nth-child(1) .poemText {
+    top: 15%;
+  }
+}
+@media (max-width: 768px) {
+  .radialGradient .section:nth-child(1) .poemText {
+    top: 17%;
+  }
+  .waxContainer {
+    transform: translateY(-40%);
+  }
+  
+}
+
 /* ======================= Page 5 ======================= */
+.section#page5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* background: radial-gradient(circle at 50% 50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%); */
+  /* background: radial-gradient(circle, rgb(204, 190, 238) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%); */
+}
 
 .radialGradient .section:nth-child(2) .poemText {
   color: rgb(39, 28, 71);
@@ -295,7 +435,28 @@ p {
   right: 10%;
 }
 
+@media (max-width: 1024px) {
+  .wingsContainer {
+    transform: scale(0.75);
+  }
+  .radialGradient .section:nth-child(2) .poemText {
+    top: 30%;
+  }
+}
+@media (max-width: 768px) {
+  .wingsContainer {
+    transform: scale(0.65);
+  }
+  .radialGradient .section:nth-child(2) .poemText {
+    top: 36%;
+  }
+}
+
 /* ======================= Page 6 ======================= */
+.section#page6 {
+  position: relative;
+  /* background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%); */
+}
 
 .radialGradient .section:nth-child(3) .poemText {
   color: rgb(39, 28, 71);
@@ -303,7 +464,7 @@ p {
   width: 100%;
   text-align: center;
   position: relative;
-  top: 35%;
+  top: 20%;
 }
 
 .radialGradient .section:nth-child(3) p:nth-child(1) {
@@ -360,6 +521,14 @@ p {
   width: 100%;
 }
 
+@media (max-width: 1024px) {
+}
+@media (max-width: 768px) {
+
+}
+
+
+
 /* ======================= Page 7 ======================= */
 .section#page7 {
   position: relative;
@@ -371,9 +540,10 @@ p {
     rgba(47, 45, 58, 1) 0%,
     rgb(16, 16, 16) 85%
   );
+  text-align: center;
 }
 
-.section:nth-child(3)>.poemText {
+.section:nth-child(6) .poemText {
   position: absolute;
   top: 15%;
   left: 50%;
@@ -383,9 +553,9 @@ p {
 .drowningBubbles {
   position: absolute;
   display: inline-block;
-  top: 48%;
-  left: 47%;
-  transform: translateX(-50%);
+  top: 60%;
+  left: calc(83% / 2);
+  transform: translate(-50%, -50%);
   height: 200px;
   width: 200px;
 }
@@ -456,42 +626,37 @@ p {
 }
 
 .icarusDrowning {
-  transform: scale(1.5) rotate(-90deg);
+  transform: scale(1.7) rotate(-90deg);
   position: absolute;
-  top: 35%;
+  top: 40%;
   filter: invert() opacity(25%);
 }
 
-/* DELETE BELOW LATER */
-
-
-.section#page3 {
-  position: absolute;
-  z-index: 0;
-  top: 100%;
-  left: 0;
-  background: radial-gradient(circle at 80% 20%, rgb(75, 75, 75, 1) 0%, rgb(25, 25, 25, 1) 40%);
+@media (max-width: 1024px) {
+  #page7 .poemText {
+    transform: translateY(15%);
+  }
+  .drowningBubbles {
+    top: calc(50% + 60px);
+    left: calc(61% / 2);
+    transform: scale(0.7);
+  }
+  .icarusDrowning {
+    top: calc(55% - 100px);
+    transform: scale(1.1) rotate(-90deg);
+  }
 }
-
-#page4 {
-  position: relative;
-}
-
-.radialGradient {
-  background: radial-gradient(circle at 50% 57%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 50%);
-}
-
-#page5 {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* background: radial-gradient(circle at 50% 50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 100%); */
-  /* background: radial-gradient(circle, rgb(204, 190, 238) 0%, rgb(114, 100, 157) 50%, rgb(57, 37, 117) 100%); */
-}
-
-#page6 {
-  position: relative;
-  /* background: radial-gradient(circle at 50% -50%, rgb(126, 115, 160) 0%, rgb(57, 37, 117) 59%); */
+@media (max-width: 768px) {
+  #page7 .poemText {
+    transform: translateY(18%);
+  }
+  .drowningBubbles {
+    top: calc(50% + 60px);
+    left: calc(41% / 2);
+    transform: scale(0.9);
+  }
+  .icarusDrowning {
+    transform: scale(1.5) rotate(-90deg);
+    top: 45%;
+  }
 }

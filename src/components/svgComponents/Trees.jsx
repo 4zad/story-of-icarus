@@ -2,12 +2,7 @@ import React from "react";
 
 function Trees(props) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="865.76"
-      height="682.89"
-      viewBox="0 0 865.76 682.89"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 865.76 682.89">
       <polygon
         points="184.99 616.85 184.99 546.45 357.46 534.57 623.6 562.45 719.91 575.45 695.25 630.45 184.99 616.85"
         fill="#0a2e57"
