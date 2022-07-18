@@ -55,7 +55,7 @@ p {
 }
 
 .titleText>p:nth-child(1) {
-  font-size: 6rem;
+  font-size: 5.5rem;
   padding-bottom: 2rem;
 }
 
@@ -115,12 +115,12 @@ p {
   z-index: -1;
   background: #01417a;
   width: 100%;
-  height: 10vh;
+  height: 17vh;
 }
 
 .treesBg {
   position: absolute;
-  top: 63%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-image: url("../assets/png/trees.png");
@@ -135,9 +135,9 @@ p {
   .titleText>p:nth-child(1) {
     font-size: 5rem;
   }
-  /* .treesBg {
-    top: %;
-  } */
+  .treesBg {
+    top: 75%;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -154,8 +154,11 @@ p {
   .seaContainer {
     transform: scaleY(1);
   }
+  .seaContainer::after {
+    height: 10vh;
+  }
   .treesBg {
-    top: 70%;
+    top: 75%;
   }
 }
 
@@ -173,7 +176,7 @@ p {
     transform: scaleY(1.5);
   }
   .treesBg {
-    top: 73%;
+    top: 75%;
   }
 }
 
@@ -284,6 +287,26 @@ p {
   transform:  scale(0.1) rotateY(180deg) scaleX(-1);
 }
 
+@media (max-width: 1440px) {
+  .moon {
+    transform: translate(100%, 100%) scale(10);
+  }
+  .farmContainer {
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    transform: translate(-25%, 25%) scale(0.9) scaleX(1.6);
+  }
+  .icarusFlying {
+    transform:  scale(0.07) scaleX(1);
+  }
+  .section:nth-child(2) .poemText3-1 {
+    transform: translateY(50%);
+  }
+  .section:nth-child(2) .poemText3-2 {
+    transform: translateY(100%);
+  }
+}
 @media (max-width: 1024px) {
   .moon {
     transform: translate(100%, 100%) scale(9);
@@ -468,7 +491,7 @@ p {
   width: 100%;
   text-align: center;
   position: relative;
-  top: 20%;
+  top: 10%;
 }
 
 .radialGradient .section:nth-child(3) p:nth-child(1) {
@@ -523,12 +546,6 @@ p {
   bottom: 0;
   position: absolute;
   width: 100%;
-}
-
-@media (max-width: 1024px) {
-}
-@media (max-width: 768px) {
-
 }
 
 

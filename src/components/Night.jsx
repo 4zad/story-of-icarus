@@ -20,8 +20,6 @@ import rock2 from "../assets/svg/rock2.svg";
 import rock3 from "../assets/svg/rock3.svg";
 import icarusDrowning from "../assets/png/icarus-drowning.png";
 
-import { nightColors } from "../data/data";
-
 import "./Night.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,6 +66,7 @@ function Night() {
         star.classList.add("star");
       }
 
+      // define individual star style
       star.style.left = x;
       star.style.top = y;
       star.style.width = width + "px";
