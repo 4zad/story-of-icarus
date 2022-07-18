@@ -27,7 +27,6 @@ import "./Night.css";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
 
-
 function Night() {
   const nightColours = ["#0F90E6", "#01417A", "#503F90", "#3F3684", "#2F2D3A"];
   const titleTextRef = useRef(null);
@@ -40,72 +39,71 @@ function Night() {
     max = Math.floor(max);
 
     return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
+  };
+
+  function createStars() {
+    const colours = ["#FFFFFF", nightColours[0], nightColours[1]];
+    const colourMin = 0;
+    const colourMax = 2;
+
+    let scene = document.querySelector(".starsScene");
+    const stars = 750;
+    const starSize = {
+      min: 1,
+      max: 3,
+    };
+    let i = 0;
+    while (i < stars) {
+      let star = document.createElement("div");
+
+      // randomize position + size
+      let x = Math.random() * 100 + "vw";
+      let y = Math.random() * 100 + "vh";
+      let width = Math.random() * (starSize.max - starSize.min);
+      let height = width;
+
+      // randomize colour
+      let colour = colours[getRandomIntInclusive(colourMin, colourMax)];
+      if (colour === colours[colourMin]) {
+        star.classList.add("star");
+      }
+
+      star.style.left = x;
+      star.style.top = y;
+      star.style.width = width + "px";
+      star.style.height = height + "px";
+      star.style.zIndex = "1";
+      star.style.backgroundColor = colour;
+      star.style.opacity = 1;
+      star.style.borderRadius = "50%";
+      star.style.position = "absolute";
+      let boxShadow = `0 0 ${width * 3}px white`;
+      star.style.boxShadow = boxShadow;
+
+      scene.appendChild(star);
+      console.log(boxShadow);
+      console.log("star created");
+      i++;
+    }
   }
 
- function createStars() {
-
-   const colours = ["#FFFFFF", nightColours[0], nightColours[1]];
-   const colourMin = 0;
-   const colourMax = 2;
-   
-   let scene = document.querySelector(".starsScene");
-      const stars = 750;
-      const starSize = {
-        min: 1,
-        max: 3,
-      };
-      let i = 0;
-      while (i < stars) {
-        let star = document.createElement("div");
-
-        // randomize position + size
-        let x = Math.random() * 100 + "vw";
-        let y = Math.random() * 100 + "vh";
-        let width = Math.random() * (starSize.max - starSize.min);
-        let height = width;
-
-        // randomize colour
-        let colour = colours[getRandomIntInclusive(colourMin, colourMax)];
-        if (colour === colours[colourMin]) {
-          star.classList.add('star');
-        }
-
-        star.style.left = x;
-        star.style.top = y;
-        star.style.width = width + "px";
-        star.style.height = height + "px";
-        star.style.zIndex = "1";
-        star.style.backgroundColor = colour;
-        star.style.opacity = 1;
-        star.style.borderRadius = "50%";
-        star.style.position = "absolute";
-        let boxShadow = `0 0 ${width * 3}px white`;
-        star.style.boxShadow = boxShadow;
-
-        scene.appendChild(star);
-        console.log(boxShadow);
-        console.log("star created")
-        i++;
-      }
-    }
-
   useEffect(() => {
-   
     createStars();
 
     const loading_tl = gsap.timeline();
     let sections = document.querySelectorAll(".section");
 
-    const getRandomIntInclusive = (min, max) => {
-      min = Math.ceil(min);
-      max = Math.floor(max);
+    // ===================== Title page animations =====================
+    gsap.to(".star", {
+      opacity: 0,
+      duration: 0.5,
+      yoyo: true,
+      repeat: -1,
+      ease: "linear",
+      stagger: 0.01,
+      overwrite: true,
+    });
 
-      return Math.floor(Math.random() * (max - min + 1) + min); // maximum and minimum inclusive
-    }
-
-    // ===================== Title page animations ===================== 
-    gsap.to(".star",{opacity: 0, duration: 0.5, yoyo: true, repeat: -1, ease: 'linear', stagger: 0.01, overwrite: true});
-    
     // initial load in title-page animation
     loading_tl
       .fromTo(
@@ -169,36 +167,34 @@ function Night() {
       },
     });
 
-    forestZoom_tl
-      .to(".treesContainer",
-        {
-          keyframes: {
-            "0%": { scale: 1.00 },
-            "6%": { y: 0, scale: scaleMultiplier * 1.00, ease: "power1.in" },
-            "10%": { y: 20, scale: scaleMultiplier * 1.03, ease: "power1.out" },
-            "16%": { y: 0, scale: scaleMultiplier * 1.05, ease: "power1.in" },
-            "20%": { y: 20, scale: scaleMultiplier * 1.08, ease: "power1.out" },
-            "26%": { y: 0, scale: scaleMultiplier * 1.10, ease: "power1.in" },
-            "30%": { y: 20, scale: scaleMultiplier * 1.13, ease: "power1.out" },
-            "36%": { y: 0, scale: scaleMultiplier * 1.15, ease: "power1.in" },
-            "40%": { y: 20, scale: scaleMultiplier * 1.18, ease: "power1.out" },
-            "46%": { y: 0, scale: scaleMultiplier * 1.21, ease: "power1.in" },
-            "50%": { y: 20, scale: scaleMultiplier * 1.25, ease: "power1.out" },
-            "56%": { y: 0, scale: scaleMultiplier * 1.28, ease: "power1.in" },
-            "60%": { y: 20, scale: scaleMultiplier * 1.32, ease: "power1.out" },
-            "66%": { y: 0, scale: scaleMultiplier * 1.35, ease: "power1.in" },
-            "70%": { y: 20, scale: scaleMultiplier * 1.38, ease: "power1.out" },
-            "76%": { y: 0, scale: scaleMultiplier * 1.40, ease: "power1.in" },
-            "80%": { y: 20, scale: scaleMultiplier * 1.43, ease: "power1.out" },
-            "86%": { y: 0, scale: scaleMultiplier * 1.45, ease: "power1.in" },
-            "90%": { y: 20, scale: scaleMultiplier * 1.48, ease: "power1.out" },
-            "96%": { y: 0, scale: scaleMultiplier * 1.50, ease: "power1.in" },
-            "100%": { y: 0, scale: scaleMultiplier * 1.50, ease: "linear" },
-            ease: "linear" // applied to entire path
-          },
-          transformOrigin: "0% 0%",
-          reversed: false,
-        });
+    forestZoom_tl.to(".treesContainer", {
+      keyframes: {
+        "0%": { scale: 1.0 },
+        "6%": { y: 0, scale: scaleMultiplier * 1.0, ease: "power1.in" },
+        "10%": { y: 20, scale: scaleMultiplier * 1.03, ease: "power1.out" },
+        "16%": { y: 0, scale: scaleMultiplier * 1.05, ease: "power1.in" },
+        "20%": { y: 20, scale: scaleMultiplier * 1.08, ease: "power1.out" },
+        "26%": { y: 0, scale: scaleMultiplier * 1.1, ease: "power1.in" },
+        "30%": { y: 20, scale: scaleMultiplier * 1.13, ease: "power1.out" },
+        "36%": { y: 0, scale: scaleMultiplier * 1.15, ease: "power1.in" },
+        "40%": { y: 20, scale: scaleMultiplier * 1.18, ease: "power1.out" },
+        "46%": { y: 0, scale: scaleMultiplier * 1.21, ease: "power1.in" },
+        "50%": { y: 20, scale: scaleMultiplier * 1.25, ease: "power1.out" },
+        "56%": { y: 0, scale: scaleMultiplier * 1.28, ease: "power1.in" },
+        "60%": { y: 20, scale: scaleMultiplier * 1.32, ease: "power1.out" },
+        "66%": { y: 0, scale: scaleMultiplier * 1.35, ease: "power1.in" },
+        "70%": { y: 20, scale: scaleMultiplier * 1.38, ease: "power1.out" },
+        "76%": { y: 0, scale: scaleMultiplier * 1.4, ease: "power1.in" },
+        "80%": { y: 20, scale: scaleMultiplier * 1.43, ease: "power1.out" },
+        "86%": { y: 0, scale: scaleMultiplier * 1.45, ease: "power1.in" },
+        "90%": { y: 20, scale: scaleMultiplier * 1.48, ease: "power1.out" },
+        "96%": { y: 0, scale: scaleMultiplier * 1.5, ease: "power1.in" },
+        "100%": { y: 0, scale: scaleMultiplier * 1.5, ease: "linear" },
+        ease: "linear", // applied to entire path
+      },
+      transformOrigin: "0% 0%",
+      reversed: false,
+    });
 
     // ===================== Page 3 animations =====================
     // pinning animation
@@ -230,16 +226,21 @@ function Night() {
         scrub: 2,
       },
     });
-    flight_path_tl.fromTo(".icarusFlying", { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
-      .to(".icarusFlying", {
-        motionPath: {
-          path: "#path",
-          align: "#path",
-          alignOrigin: [0.5, 0.5],
-          autoRotate: true
+    flight_path_tl
+      .fromTo(".icarusFlying", { autoAlpha: 0 }, { autoAlpha: 1 }, 0)
+      .to(
+        ".icarusFlying",
+        {
+          motionPath: {
+            path: "#path",
+            align: "#path",
+            alignOrigin: [0.5, 0.5],
+            autoRotate: true,
+          },
+          ease: "power1.inOut",
         },
-        ease: "power1.inOut"
-      }, 0)
+        0
+      );
 
     //  ===================== Page 5 animations =====================
     // wings animation + feathers
@@ -340,7 +341,7 @@ function Night() {
     // Page 7 animation
     const drowning_tl = gsap.timeline({
       defaults: {
-        ease: "circ.out"
+        ease: "circ.out",
       },
       scrollTrigger: {
         trigger: "#page7",
@@ -380,7 +381,7 @@ function Night() {
           x: 35,
           y: -300,
           opacity: 1,
-          duration: 0.5
+          duration: 0.5,
         },
         "<-=0.5"
       )
@@ -393,7 +394,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -403,7 +404,7 @@ function Night() {
           x: -50,
           y: -270,
           opacity: 1,
-          duration: 0.53
+          duration: 0.53,
         },
         "<-=0.5"
       )
@@ -416,7 +417,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -426,7 +427,7 @@ function Night() {
           x: 0,
           y: -225,
           opacity: 1,
-          duration: 0.56
+          duration: 0.56,
         },
         "<-=0.5"
       )
@@ -439,7 +440,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -449,7 +450,7 @@ function Night() {
           x: 45,
           y: -200,
           opacity: 1,
-          duration: 0.6
+          duration: 0.6,
         },
         "<-=0.5"
       )
@@ -462,7 +463,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -472,7 +473,7 @@ function Night() {
           x: -30,
           y: -175,
           opacity: 1,
-          duration: 0.675
+          duration: 0.675,
         },
         "<-=0.5"
       )
@@ -485,7 +486,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -495,7 +496,7 @@ function Night() {
           x: 15,
           y: -150,
           opacity: 1,
-          duration: 0.75
+          duration: 0.75,
         },
         "<-=0.5"
       )
@@ -508,7 +509,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       )
@@ -518,7 +519,7 @@ function Night() {
           x: -5,
           y: -120,
           opacity: 1,
-          duration: 0.9
+          duration: 0.9,
         },
         "<-=0.5"
       )
@@ -531,7 +532,7 @@ function Night() {
           duration: 3.0,
           ease: "power1.inOut",
           repeat: -1,
-          yoyo: true
+          yoyo: true,
         },
         ">+=0.05"
       );
@@ -613,8 +614,16 @@ function Night() {
             </div>
 
             <div className="flightPathContainer">
-              <svg viewBox="24.118 106.085 809.412 257.444" xmlns="http://www.w3.org/2000/svg">
-                <path id="path" d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529" stroke="transparent" fill="transparent" />
+              <svg
+                viewBox="24.118 106.085 809.412 257.444"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  id="path"
+                  d="M 24.118 118.823 C 151.424 236.286 301.697 142.622 329.412 131.764 C 573.409 36.172 629.445 234.184 671.765 290 C 724.24 359.209 785.125 360.014 833.53 363.529"
+                  stroke="transparent"
+                  fill="transparent"
+                />
               </svg>
             </div>
 
@@ -713,7 +722,7 @@ function Night() {
 
         <img className="icarusDrowning" src={icarusDrowning} />
       </section>
-    </div >
+    </div>
   );
 }
 

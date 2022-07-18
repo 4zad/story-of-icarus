@@ -187,8 +187,8 @@ p {
   transform: translate(50%, 30%) scaleX(1.6);
 }
 
-.grassContainer {
-  /* position: absolute; */
+/* .grassContainer {
+  position: absolute;
 }
 
 .grass {
@@ -200,7 +200,7 @@ p {
   height: 500px;
   margin: 96px 0 auto;
   transform: translate(50%, 30%);
-}
+} */
 
 
 .icarusFlying {
