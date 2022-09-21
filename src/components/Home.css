@@ -49,12 +49,6 @@ ul {
   background-color: #282c34;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
-  overscroll-behavior: none;
-}
-
-.Panel {
-  display: block;
-  width: 100vw;
   overflow-x: hidden;
 }
 
