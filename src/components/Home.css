@@ -99,6 +99,7 @@ ul {
   justify-content: space-between;
   text-align: center;
   background: linear-gradient(90deg, #3F3684 30%, #FD764D 100%);
+  overflow-x: hidden;
 }
 
 .day, .night {
